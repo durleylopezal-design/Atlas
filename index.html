@@ -49,6 +49,16 @@ body {
 }
 .nav.scrolled { box-shadow: var(--shadow-sm); }
 
+.nav-university-logo {
+  display: flex; align-items: center;
+  margin-right: 1rem;
+}
+.university-logo-img {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+}
+
 .nav-logo {
   display: flex; align-items: center; gap: 10px;
   text-decoration: none;
@@ -642,6 +652,7 @@ body {
 .badge-investigacion { background: rgba(46,125,50,0.1); color: #1b5e20; }
 .badge-memorias { background: rgba(249,168,37,0.12); color: #7c5700; }
 .badge-ponencia { background: rgba(132,133,133,0.12); color: #4a4a4a; }
+.badge-ideas { background: rgba(109,40,217,0.1); color: #4c1d95; }
 
 /* Estado badges */
 .badge-pruebas { background: rgba(0,123,153,0.12); color: var(--blue); }
@@ -1472,6 +1483,7 @@ body {
   .nav-links { display: none; }
   .hamburger { display: flex; }
   .lideres-grid { grid-template-columns: 1fr; }
+  .nav-university-logo { display: none; }
 }
 
 @media (max-width: 600px) {
@@ -1498,6 +1510,9 @@ body {
 
 <!-- ════════ NAV ════════ -->
 <nav class="nav" id="navbar">
+  <div class="nav-university-logo">
+    <img src="logo-universidad.png" alt="Universidad Católica Luis Amigó" class="university-logo-img">
+  </div>
   <a href="#" class="nav-logo">
     <div class="nav-logo-badge">IA</div>
     <div class="nav-logo-text">
@@ -1626,25 +1641,25 @@ body {
       <div class="pipeline">
         <div class="pipeline-stage stage-idea">
           <div class="pipeline-stage-icon">💡</div>
-          <div class="pipeline-stage-count">0</div>
+          <div class="pipeline-stage-count">4</div>
           <div class="pipeline-stage-label">Idea / Propuesta</div>
         </div>
         <div class="pipeline-arrow">→</div>
         <div class="pipeline-stage stage-mvp">
           <div class="pipeline-stage-icon">🚀</div>
-          <div class="pipeline-stage-count" id="cnt-mvp">8</div>
+          <div class="pipeline-stage-count" id="cnt-mvp">7</div>
           <div class="pipeline-stage-label">MVP / Entregado</div>
         </div>
         <div class="pipeline-arrow">→</div>
         <div class="pipeline-stage stage-dev">
           <div class="pipeline-stage-icon">🔬</div>
-          <div class="pipeline-stage-count" id="cnt-dev">14</div>
+          <div class="pipeline-stage-count" id="cnt-dev">19</div>
           <div class="pipeline-stage-label">Investigación / Revisión</div>
         </div>
         <div class="pipeline-arrow">→</div>
         <div class="pipeline-stage stage-test">
           <div class="pipeline-stage-icon">✅</div>
-          <div class="pipeline-stage-count" id="cnt-test">4</div>
+          <div class="pipeline-stage-count" id="cnt-test">7</div>
           <div class="pipeline-stage-label">Aprobado / Publicación</div>
         </div>
         <div class="pipeline-arrow">→</div>
@@ -1687,6 +1702,7 @@ body {
         <button class="filter-btn" onclick="setFilter('tipo','Investigación Aplicada',this)">Investigación</button>
         <button class="filter-btn" onclick="setFilter('tipo','Memorias',this)">Memorias</button>
         <button class="filter-btn" onclick="setFilter('tipo','Ponencia',this)">Ponencia</button>
+        <button class="filter-btn" onclick="setFilter('tipo','Ideas/Propuestas',this)">Ideas/Propuestas</button>
       </div>
 
       <div class="filter-group">
@@ -1713,7 +1729,7 @@ body {
     </div>
 
     <div class="projects-meta">
-      <p class="projects-count">Mostrando <strong id="visibleCount">33</strong> de 33 proyectos</p>
+      <p class="projects-count">Mostrando <strong id="visibleCount">37</strong> de <strong id="totalCount">37</strong> proyectos</p>
     </div>
 
     <div class="projects-grid" id="projectsGrid"></div>
@@ -2313,7 +2329,7 @@ body {
       </div>
       <div class="footer-info-item" style="margin-top:1rem;">
         <span class="footer-info-icon">📋</span>
-        <div class="footer-info-text">33 proyectos activos - 2025 I/II</div>
+        <div class="footer-info-text">33 proyectos activos 2025 I/II</div>
       </div>
     </div>
   </div>
@@ -2339,7 +2355,7 @@ const projects = [
     id: 1,
     nombre: "Diseño e Implementación de una Aplicación Móvil para el Reconocimiento de Emociones en Tiempo Real mediante Visión Artificial e IA",
     tipo: "MVP",
-    estado: "Pruebas funcionales",
+    estado: "Pruebas funcionales", 
     area: ["IA", "ML"],
     equipo: ["Todo el semillero IAXpert"],
     entidad: "Universidad Católica Luis Amigó / Semillero IAXpert",
@@ -2421,7 +2437,7 @@ const projects = [
   },
   {
     id: 8,
-    nombre: "Gestión de la Biodiversidad y Bioeconomía - Monitoreo de Actividades Ilícitas en Áreas Protegidas",
+    nombre: "Gestión de la Biodiversidad y Bioeconomía con Monitoreo de Actividades Ilícitas en Áreas Protegidas",
     tipo: "Investigación Aplicada",
     estado: "Entregado sin respuesta",
     area: ["Ambiental", "IA"],
@@ -2433,7 +2449,7 @@ const projects = [
   },
   {
     id: 9,
-    nombre: "Sistemas Agroalimentarios Inteligentes - Detección de Cultivos Ilícitos y Seguridad Alimentaria",
+    nombre: "Sistemas Agroalimentarios Inteligentes y Detección de Cultivos Ilícitos y Seguridad Alimentaria",
     tipo: "Investigación Aplicada",
     estado: "Entregado sin respuesta",
     area: ["IA", "Ambiental"],
@@ -2445,7 +2461,7 @@ const projects = [
   },
   {
     id: 10,
-    nombre: "Energías Renovables y Transición Energética - Seguridad de Infraestructuras Críticas",
+    nombre: "Energías Renovables y Transición Energética con Seguridad de Infraestructuras Críticas",
     tipo: "Investigación Aplicada",
     estado: "Entregado sin respuesta",
     area: ["Ciberseguridad"],
@@ -2493,7 +2509,7 @@ const projects = [
   },
   {
     id: 14,
-    nombre: "Algoritmos Cuánticos - Criptoanálisis y Optimización de Operaciones",
+    nombre: "Algoritmos Cuánticos, Criptoanálisis y Optimización de Operaciones",
     tipo: "Investigación Aplicada",
     estado: "Entregado sin respuesta",
     area: ["Cuántica"],
@@ -2505,7 +2521,7 @@ const projects = [
   },
   {
     id: 15,
-    nombre: "Simulación Cuántica - Modelado de Escenarios para Planificación Operativa",
+    nombre: "Simulación Cuántica con Modelado de Escenarios para Planificación Operativa",
     tipo: "Investigación Aplicada",
     estado: "En revisión",
     area: ["Cuántica"],
@@ -2529,7 +2545,7 @@ const projects = [
   },
   {
     id: 17,
-    nombre: "Comunicaciones Ultra-Seguras - Aseguramiento de Comunicaciones Críticas",
+    nombre: "Comunicaciones Ultra-Seguras y Aseguramiento de Comunicaciones Críticas",
     tipo: "Investigación Aplicada",
     estado: "En revisión",
     area: ["Ciberseguridad", "Cuántica"],
@@ -2541,7 +2557,7 @@ const projects = [
   },
   {
     id: 18,
-    nombre: "Internet Cuántico y Nodos de Red - Comunicaciones Inviolables",
+    nombre: "Internet Cuántico y Nodos de Red con Comunicaciones Inviolables",
     tipo: "Investigación Aplicada",
     estado: "En revisión",
     area: ["Cuántica"],
@@ -2553,7 +2569,7 @@ const projects = [
   },
   {
     id: 19,
-    nombre: "Sensores Cuánticos para la Agricultura - Detección de Cultivos Ilícitos",
+    nombre: "Sensores Cuánticos para la Agricultura para la detección de Cultivos Ilícitos",
     tipo: "Investigación Aplicada",
     estado: "En revisión",
     area: ["Cuántica", "Ambiental"],
@@ -2565,7 +2581,7 @@ const projects = [
   },
   {
     id: 20,
-    nombre: "Sensores Cuánticos para la Salud - Detección de Agentes Químicos/Biológicos",
+    nombre: "Sensores Cuánticos para la Salud de Detección de Agentes Químicos/Biológicos",
     tipo: "Investigación Aplicada",
     estado: "En revisión",
     area: ["Cuántica", "Salud"],
@@ -2577,7 +2593,7 @@ const projects = [
   },
   {
     id: 21,
-    nombre: "Sensores Cuánticos para el Medio Ambiente - Monitoreo de Fronteras",
+    nombre: "Sensores Cuánticos para el Medio Ambiente y Monitoreo de Fronteras",
     tipo: "Investigación Aplicada",
     estado: "En revisión",
     area: ["Cuántica", "Ambiental"],
@@ -2589,7 +2605,7 @@ const projects = [
   },
   {
     id: 22,
-    nombre: "Tecnologías para el Desminado - Detección Eficiente de Minas Antipersona y AEI",
+    nombre: "Tecnologías para el Desminado y Detección Eficiente de Minas Antipersona y AEI",
     tipo: "Investigación Aplicada",
     estado: "En revisión",
     area: ["Social"],
@@ -2601,7 +2617,7 @@ const projects = [
   },
   {
     id: 23,
-    nombre: "Metrología Cuántica - Calibración de Alta Precisión para Forensia e Inteligencia",
+    nombre: "Metrología Cuántica con Calibración de Alta Precisión para Forensia e Inteligencia",
     tipo: "Investigación Aplicada",
     estado: "En revisión",
     area: ["Cuántica"],
@@ -2730,6 +2746,54 @@ const projects = [
     radicado: "EN REVISIÓN",
     initials: "BC",
     color: "#007B99"
+  },
+  {
+    id: 34,
+    nombre: "Plataforma de Realidad Virtual para Entrenamiento en Ciberseguridad Empresarial",
+    tipo: "Ideas/Propuestas",
+    estado: "En revisión",
+    area: ["Ciberseguridad", "Educación"],
+    equipo: ["Todo IAXpert"],
+    entidad: "Propuesta para Convocatoria MinTIC 2025",
+    radicado: "PROPUESTA",
+    initials: "VR",
+    color: "#1a4a2e"
+  },
+  {
+    id: 35,
+    nombre: "Sistema de IA para Detección Temprana de Enfermedades en Cultivos Agrícolas",
+    tipo: "Ideas/Propuestas",
+    estado: "En revisión",
+    area: ["IA", "Ambiental"],
+    equipo: ["Yiseth Camila Lemus", "Cristian Andrey Gómez"],
+    entidad: "Propuesta para Colciencias 2025",
+    radicado: "PROPUESTA",
+    initials: "IA",
+    color: "#2E7D32"
+  },
+  {
+    id: 36,
+    nombre: "Aplicación Móvil para Monitoreo de Salud Mental en Estudiantes Universitarios",
+    tipo: "Ideas/Propuestas",
+    estado: "En revisión",
+    area: ["Salud", "IA"],
+    equipo: ["Salomé de la Rosa", "Valeria Rios Tapias"],
+    entidad: "Propuesta para Universidad Católica Luis Amigó",
+    radicado: "PROPUESTA",
+    initials: "SM",
+    color: "#007B99"
+  },
+  {
+    id: 37,
+    nombre: "Red Neuronal para Optimización de Rutas de Distribución Urbana Sostenible",
+    tipo: "Ideas/Propuestas",
+    estado: "En revisión",
+    area: ["IA", "Social"],
+    equipo: ["Todo IAXpert"],
+    entidad: "Propuesta para Alcaldía de Medellín",
+    radicado: "PROPUESTA",
+    initials: "RN",
+    color: "#F39200"
   }
 ];
 
@@ -2750,7 +2814,7 @@ const avatarColors = ['#007B99','#F39200','#2E7D32','#6d28d9','#b45309','#1a4a2e
 
 // ════════ RENDER PROJECTS ════════
 function getTipoBadgeClass(tipo) {
-  const map = { 'MVP': 'badge-mvp', 'Investigación Aplicada': 'badge-investigacion', 'Memorias': 'badge-memorias', 'Ponencia': 'badge-ponencia' };
+  const map = { 'MVP': 'badge-mvp', 'Investigación Aplicada': 'badge-investigacion', 'Memorias': 'badge-memorias', 'Ponencia': 'badge-ponencia', 'Ideas/Propuestas': 'badge-ideas' };
   return map[tipo] || 'badge-mvp';
 }
 function getEstadoBadgeClass(estado) {
