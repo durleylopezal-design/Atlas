@@ -1,0 +1,33 @@
+/* ══════════════════════════════════════
+   DESIGN TOKENS — CSS Custom Properties
+   ══════════════════════════════════════ */
+
+:root {
+  /* Colors */
+  --blue:        #007B99;
+  --blue-dark:   #005f77;
+  --blue-light:  #e8f4f8;
+  --orange:      #F39200;
+  --orange-light:#fff3e0;
+  --gray:        #848585;
+  --white:       #FFFFFF;
+  --dark:        #1A1A1A;
+  --green:       #2E7D32;
+  --yellow:      #F9A825;
+  --text-body:   #2d3748;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 8px  rgba(0,123,153,0.08);
+  --shadow-md: 0 4px 20px rgba(0,123,153,0.12);
+  --shadow-lg: 0 8px 40px rgba(0,123,153,0.18);
+
+  /* Typography */
+  --font-heading: 'Barlow Condensed', sans-serif;
+  --font-body:    'Source Sans 3', sans-serif;
+  --font-ui:      'Inter', sans-serif;
+
+  /* Layout */
+  --nav-height: 68px;
+  --container:  1200px;
+  --section-padding: 5rem 2rem;
+}

@@ -1,0 +1,15 @@
+/* ══════════════════════════════════════
+   ANIMATIONS & SCROLL UTILITIES
+   ══════════════════════════════════════ */
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: none;
+}
+
+.counter-num { display: inline; }

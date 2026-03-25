@@ -1,0 +1,23 @@
+/* ══════════════════════════════════════
+   SECTION: Proyectos
+   ══════════════════════════════════════ */
+
+.projects-bg {
+  background: #f8fafb;
+  padding: 5rem 0;
+}
+.projects-inner {
+  max-width: 1300px; margin: 0 auto; padding: 0 2rem;
+}
+
+/* Projects grid */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .projects-grid { grid-template-columns: 1fr; }
+}

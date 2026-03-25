@@ -1,0 +1,66 @@
+/* ══════════════════════════════════════
+   COMPONENT: Buttons
+   ══════════════════════════════════════ */
+
+.btn-primary {
+  background: var(--orange); color: white;
+  padding: 14px 28px; border-radius: 8px;
+  font-weight: 700; font-size: 15px;
+  text-decoration: none; border: none; cursor: pointer;
+  display: inline-flex; align-items: center; gap: 8px;
+  transition: all 0.2s;
+  font-family: var(--font-body);
+}
+.btn-primary:hover {
+  background: #d97d00;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(243,146,0,0.4);
+}
+
+.btn-outline {
+  background: transparent; color: white;
+  padding: 13px 28px; border-radius: 8px;
+  font-weight: 600; font-size: 15px;
+  text-decoration: none;
+  border: 2px solid rgba(255,255,255,0.4);
+  display: inline-flex; align-items: center; gap: 8px;
+  transition: all 0.2s; cursor: pointer;
+  font-family: var(--font-body);
+}
+.btn-outline:hover {
+  background: rgba(255,255,255,0.12);
+  border-color: rgba(255,255,255,0.7);
+}
+
+.btn-ver {
+  background: var(--blue); color: white;
+  padding: 6px 14px; border-radius: 6px;
+  font-size: 12px; font-weight: 700;
+  border: none; cursor: pointer;
+  transition: all 0.2s;
+  font-family: var(--font-body);
+}
+.btn-ver:hover { background: var(--blue-dark); transform: scale(1.03); }
+
+.btn-contact {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 18px; border-radius: 9px;
+  font-size: 12.5px; font-weight: 700;
+  text-decoration: none;
+  border: none; cursor: pointer; color: white;
+  transition: all 0.2s;
+  font-family: var(--font-body);
+}
+.btn-contact:hover { transform: translateX(3px); filter: brightness(1.1); }
+
+.btn-cta-white {
+  background: white; color: var(--orange);
+  padding: 14px 28px; border-radius: 10px;
+  font-weight: 800; font-size: 15px;
+  text-decoration: none; flex-shrink: 0;
+  display: inline-flex; align-items: center; gap: 8px;
+  transition: all 0.2s;
+  font-family: var(--font-heading);
+  letter-spacing: 0.02em;
+}
+.btn-cta-white:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }

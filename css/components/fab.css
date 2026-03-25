@@ -1,0 +1,60 @@
+/* ══════════════════════════════════════
+   COMPONENT: Floating Action Button (LinkedIn)
+   ══════════════════════════════════════ */
+
+.fab-linkedin {
+  position: fixed; bottom: 28px; left: 28px;
+  width: 52px; height: 52px;
+  background: #0077B5; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 20px rgba(0,119,181,0.4);
+  z-index: 999; text-decoration: none;
+  transition: all 0.3s ease;
+  border: 3px solid white;
+}
+.fab-linkedin:hover {
+  transform: scale(1.12) translateY(-3px);
+  box-shadow: 0 8px 32px rgba(0,119,181,0.55);
+}
+.fab-linkedin svg { width: 26px; height: 26px; fill: white; }
+
+.fab-tooltip {
+  position: absolute; left: 62px; bottom: 50%;
+  transform: translateY(50%);
+  background: #1a1a1a; color: white;
+  font-size: 12px; font-weight: 600;
+  padding: 6px 12px; border-radius: 8px;
+  white-space: nowrap;
+  opacity: 0; pointer-events: none; transition: opacity 0.2s;
+  font-family: var(--font-body);
+}
+.fab-tooltip::before {
+  content: '';
+  position: absolute; right: 100%; top: 50%;
+  transform: translateY(-50%);
+  border: 5px solid transparent;
+  border-right-color: #1a1a1a;
+}
+.fab-linkedin:hover .fab-tooltip { opacity: 1; }
+
+/* Social link icons (equipo section) */
+.social-link {
+  width: 28px; height: 28px; border-radius: 7px;
+  display: flex; align-items: center; justify-content: center;
+  text-decoration: none; transition: all 0.2s; font-size: 13px;
+}
+.social-link:hover { transform: scale(1.15); }
+
+.social-link.linkedin { background: rgba(0,119,181,0.1);  color: #0077B5; }
+.social-link.github   { background: rgba(36,41,46,0.08);  color: #24292e; }
+.social-link.scholar  { background: rgba(66,133,244,0.1); color: #4285F4; }
+.social-link.cvlac    { background: rgba(0,123,153,0.1);  color: var(--blue); }
+
+.social-link.linkedin:hover { background: #0077B5; color: white; }
+.social-link.github:hover   { background: #24292e; color: white; }
+.social-link.scholar:hover  { background: #4285F4; color: white; }
+.social-link.cvlac:hover    { background: var(--blue); color: white; }
+
+@media (max-width: 600px) {
+  .fab-linkedin { bottom: 20px; left: 20px; width: 46px; height: 46px; }
+}

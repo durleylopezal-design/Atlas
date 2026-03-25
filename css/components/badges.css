@@ -1,0 +1,24 @@
+/* ══════════════════════════════════════
+   COMPONENT: Badges
+   ══════════════════════════════════════ */
+
+.badge {
+  padding: 3px 10px; border-radius: 100px;
+  font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em;
+  display: inline-block;
+}
+
+/* Project type badges */
+.badge-mvp           { background: rgba(0,123,153,0.1);   color: #005f77; }
+.badge-investigacion { background: rgba(46,125,50,0.1);   color: #1b5e20; }
+.badge-memorias      { background: rgba(249,168,37,0.12); color: #7c5700; }
+.badge-ponencia      { background: rgba(132,133,133,0.12);color: #4a4a4a; }
+.badge-ideas         { background: rgba(109,40,217,0.1);  color: #4c1d95; }
+
+/* Project status badges */
+.badge-pruebas   { background: rgba(0,123,153,0.12);   color: var(--blue); }
+.badge-aprobado  { background: rgba(46,125,50,0.12);   color: var(--green); }
+.badge-esperando { background: rgba(243,146,0,0.12);   color: #b06b00; }
+.badge-entregado { background: rgba(132,133,133,0.12); color: var(--gray); }
+.badge-revision  { background: rgba(249,168,37,0.12);  color: #7c5700; }

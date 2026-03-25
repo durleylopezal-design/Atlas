@@ -1,0 +1,152 @@
+/* ══════════════════════════════════════
+   COMPONENT: Navigation Bar
+   ══════════════════════════════════════ */
+
+.nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 1000;
+  background: rgba(255,255,255,0.97);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0,123,153,0.1);
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--nav-height);
+  transition: all 0.3s ease;
+}
+.nav.scrolled { box-shadow: var(--shadow-sm); }
+
+/* University logo */
+.nav-university-logo {
+  display: flex;
+  align-items: center;
+  margin-right: 1rem;
+}
+.university-logo-img {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* Brand logo */
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+.nav-logo-badge {
+  width: 38px; height: 38px;
+  background: var(--blue);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-weight: 800; font-size: 18px;
+  color: white;
+  letter-spacing: -1px;
+  position: relative; overflow: hidden;
+}
+.nav-logo-badge::after {
+  content: '';
+  position: absolute; top: -5px; right: -5px;
+  width: 14px; height: 14px;
+  background: var(--orange);
+  clip-path: polygon(0 0, 100% 0, 100% 100%);
+}
+.nav-logo-text { line-height: 1.1; }
+.nav-logo-text .top {
+  font-family: var(--font-heading);
+  font-weight: 700; font-size: 11px;
+  color: var(--gray);
+  letter-spacing: 0.05em; text-transform: uppercase;
+}
+.nav-logo-text .bottom {
+  font-family: var(--font-heading);
+  font-weight: 800; font-size: 18px;
+  color: var(--blue);
+  letter-spacing: 0.02em;
+}
+.nav-logo-text .bottom span { color: var(--orange); }
+
+/* Desktop links */
+.nav-links {
+  display: flex; gap: 2rem;
+  list-style: none;
+  align-items: center;
+}
+.nav-links a {
+  font-size: 14px; font-weight: 600;
+  color: var(--gray); text-decoration: none;
+  letter-spacing: 0.03em; text-transform: uppercase;
+  transition: color 0.2s;
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute; bottom: -4px; left: 0; right: 0;
+  height: 2px; background: var(--orange);
+  transform: scaleX(0); transition: transform 0.2s;
+}
+.nav-links a:hover { color: var(--blue); }
+.nav-links a:hover::after { transform: scaleX(1); }
+
+.nav-cta {
+  background: var(--blue); color: white !important;
+  padding: 8px 18px; border-radius: 6px;
+  transition: background 0.2s !important;
+}
+.nav-cta:hover { background: var(--blue-dark) !important; }
+.nav-cta::after { display: none !important; }
+
+/* LinkedIn icon in nav */
+.nav-linkedin {
+  display: flex; align-items: center; justify-content: center;
+  width: 36px; height: 36px; border-radius: 8px;
+  background: rgba(0,119,181,0.1);
+  border: 1px solid rgba(0,119,181,0.2);
+  transition: all 0.2s; text-decoration: none;
+}
+.nav-linkedin:hover {
+  background: rgba(0,119,181,0.18);
+  border-color: #0077B5;
+  transform: scale(1.05);
+}
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column; gap: 5px;
+  cursor: pointer; background: none; border: none; padding: 4px;
+}
+.hamburger span {
+  display: block; width: 24px; height: 2px;
+  background: var(--blue); border-radius: 2px;
+  transition: all 0.3s;
+}
+
+/* Mobile menu */
+.mobile-menu {
+  display: none;
+  position: fixed; top: var(--nav-height); left: 0; right: 0; bottom: 0;
+  background: white; z-index: 999;
+  padding: 2rem;
+  flex-direction: column; gap: 1.5rem;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  font-family: var(--font-heading);
+  font-size: 24px; font-weight: 700;
+  color: var(--dark); text-decoration: none;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(0,123,153,0.1);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .nav-links       { display: none; }
+  .hamburger       { display: flex; }
+  .nav-university-logo { display: none; }
+}

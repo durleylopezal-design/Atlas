@@ -1,0 +1,28 @@
+/* ══════════════════════════════════════
+   MAIN CSS ENTRY POINT
+   Imports all modules in dependency order
+   ══════════════════════════════════════ */
+
+/* 1. Base: tokens & reset */
+@import url('./base/variables.css');
+@import url('./base/reset.css');
+
+/* 2. Shared components */
+@import url('./components/navbar.css');
+@import url('./components/buttons.css');
+@import url('./components/badges.css');
+@import url('./components/cards.css');
+@import url('./components/modal.css');
+@import url('./components/filters.css');
+@import url('./components/fab.css');
+
+/* 3. Page sections */
+@import url('./sections/hero.css');
+@import url('./sections/fabrica.css');
+@import url('./sections/proyectos.css');
+@import url('./sections/extension.css');
+@import url('./sections/lineas.css');
+@import url('./sections/galeria.css');
+@import url('./sections/equipo.css');
+@import url('./sections/footer.css');
+@import url('./sections/animations.css');

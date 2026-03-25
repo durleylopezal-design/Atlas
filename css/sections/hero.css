@@ -1,0 +1,152 @@
+/* ══════════════════════════════════════
+   SECTION: Hero
+   ══════════════════════════════════════ */
+
+.hero {
+  min-height: 100vh;
+  background: var(--blue);
+  position: relative;
+  display: flex; align-items: center;
+  overflow: hidden;
+  padding-top: var(--nav-height);
+}
+
+/* Background texture */
+.hero-texture {
+  position: absolute; inset: 0;
+  opacity: 0.07;
+  background-image: radial-gradient(circle 30px at 50% 50%, transparent 20px, rgba(255,255,255,0.3) 20px, rgba(255,255,255,0.3) 28px, transparent 28px);
+  background-size: 70px 70px;
+  pointer-events: none;
+}
+
+/* Geometric decorations */
+.hero-tri-top {
+  position: absolute; top: 0; right: 0;
+  width: 0; height: 0;
+  border-left: 280px solid transparent;
+  border-top: 200px solid var(--orange);
+  opacity: 0.9;
+}
+.hero-arc-bottom {
+  position: absolute; bottom: -80px; left: -80px;
+  width: 320px; height: 320px;
+  border-radius: 50%;
+  border: 60px solid var(--orange);
+  opacity: 0.3;
+}
+
+/* Floating code particles */
+.hero-particles { position: absolute; inset: 0; pointer-events: none; }
+.particle {
+  position: absolute;
+  font-family: 'Source Code Pro', monospace;
+  font-size: 12px;
+  color: rgba(255,255,255,0.08);
+  animation: float linear infinite;
+  white-space: nowrap;
+}
+@keyframes float {
+  from { transform: translateY(110vh); opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  to   { transform: translateY(-10vh); opacity: 0; }
+}
+
+/* Layout */
+.hero-content {
+  position: relative; z-index: 2;
+  max-width: var(--container); margin: 0 auto;
+  padding: 4rem 2rem;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+  align-items: center;
+}
+
+/* Badge */
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.25);
+  padding: 6px 16px; border-radius: 100px;
+  margin-bottom: 1.5rem;
+}
+.hero-badge span {
+  font-size: 12px; font-weight: 600;
+  color: rgba(255,255,255,0.9);
+  letter-spacing: 0.1em; text-transform: uppercase;
+}
+.hero-badge-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--orange);
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50%       { transform: scale(1.5); opacity: 0.6; }
+}
+
+/* Heading */
+.hero h1 {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: clamp(2.8rem, 5vw, 5rem);
+  line-height: 1.0; color: white;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.01em;
+}
+.hero h1 span { color: var(--orange); }
+
+.hero-subtitle {
+  font-family: var(--font-heading);
+  font-weight: 600; font-size: clamp(1.2rem, 2vw, 1.8rem);
+  color: rgba(255,255,255,0.75);
+  letter-spacing: 0.03em; text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+.hero-desc {
+  font-size: 1.1rem; color: rgba(255,255,255,0.8);
+  line-height: 1.7; margin-bottom: 2.5rem; max-width: 480px;
+}
+
+/* Tags */
+.hero-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 2rem; }
+.hero-tag {
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 4px 12px; border-radius: 100px;
+  font-size: 13px; color: rgba(255,255,255,0.85); font-weight: 600;
+}
+
+.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+/* Stats grid */
+.hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.hero-stat {
+  background: rgba(255,255,255,0.09);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 16px; padding: 1.75rem 1.5rem;
+  transition: all 0.3s;
+}
+.hero-stat:hover {
+  background: rgba(255,255,255,0.14);
+  border-color: rgba(255,255,255,0.3);
+  transform: translateY(-4px);
+}
+.hero-stat-num {
+  font-family: var(--font-heading);
+  font-weight: 800; font-size: 3.5rem;
+  color: var(--orange); line-height: 1; margin-bottom: 4px;
+}
+.hero-stat-label {
+  font-size: 13px; color: rgba(255,255,255,0.7);
+  font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .hero-content { grid-template-columns: 1fr; gap: 3rem; }
+  .hero-stats   { grid-template-columns: repeat(4, 1fr); }
+}
+@media (max-width: 600px) {
+  .hero-stats { grid-template-columns: repeat(2, 1fr); }
+}

@@ -1,0 +1,72 @@
+/* ══════════════════════════════════════
+   RESET & BASE STYLES
+   ══════════════════════════════════════ */
+
+*  { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  color: var(--dark);
+  background: var(--white);
+  overflow-x: hidden;
+}
+
+/* Shared layout helpers */
+.section {
+  padding: var(--section-padding);
+  max-width: var(--container);
+  margin: 0 auto;
+}
+
+.section-full {
+  padding: var(--section-padding);
+}
+
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 1rem;
+}
+.section-label span {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--orange);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+.section-label-line {
+  width: 32px;
+  height: 2px;
+  background: var(--orange);
+  border-radius: 2px;
+}
+
+.section-title {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  color: var(--dark);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+.section-title span { color: var(--blue); }
+
+.section-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 1rem 0 2.5rem;
+}
+.section-divider-line {
+  flex: 1;
+  height: 1px;
+  background: rgba(0,123,153,0.15);
+}
+.section-divider-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--orange);
+  border-radius: 50%;
+}

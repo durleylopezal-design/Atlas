@@ -1,0 +1,58 @@
+/* ══════════════════════════════════════
+   SECTION: Líneas de Investigación
+   ══════════════════════════════════════ */
+
+.lineas-bg { background: var(--dark); padding: 5rem 0; }
+.lineas-inner { max-width: var(--container); margin: 0 auto; padding: 0 2rem; }
+
+.lineas-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem; margin-top: 3rem;
+}
+
+.linea-card {
+  border-radius: 20px; padding: 2.5rem 2rem;
+  transition: all 0.3s; cursor: pointer;
+  position: relative; overflow: hidden;
+}
+.linea-card::after {
+  content: 'Ó';
+  position: absolute; bottom: -20px; right: -10px;
+  font-family: var(--font-heading);
+  font-size: 120px; font-weight: 900;
+  opacity: 0.06; color: white; line-height: 1;
+}
+.linea-card:hover { transform: translateY(-6px); }
+
+/* Color variants */
+.linea-ia      { background: linear-gradient(135deg, var(--blue) 0%, #005877 100%); }
+.linea-cuantica{ background: linear-gradient(135deg, #1a1040 0%, #2d1b69 100%); border: 1px solid rgba(255,255,255,0.08); }
+.linea-ciber   { background: linear-gradient(135deg, #0a2010 0%, #1b4820 100%); }
+
+/* Card content */
+.linea-icon  { font-size: 3rem; margin-bottom: 1rem; display: block; }
+.linea-title {
+  font-family: var(--font-heading);
+  font-weight: 800; font-size: 1.8rem;
+  color: white; line-height: 1.2; margin-bottom: 0.75rem;
+}
+.linea-desc {
+  font-size: 14px; color: rgba(255,255,255,0.7);
+  line-height: 1.6; margin-bottom: 1.5rem;
+}
+.linea-count {
+  font-family: var(--font-heading);
+  font-weight: 700; font-size: 1.1rem;
+  color: var(--orange); margin-bottom: 0.75rem;
+}
+.linea-progress-bg {
+  height: 6px; border-radius: 3px;
+  background: rgba(255,255,255,0.12); overflow: hidden;
+}
+.linea-progress-fill {
+  height: 100%; border-radius: 3px;
+  background: var(--orange); transition: width 1.5s ease;
+}
+
+/* Responsive */
+@media (max-width: 900px) { .lineas-grid { grid-template-columns: 1fr; } }

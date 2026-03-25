@@ -1,0 +1,100 @@
+/* ══════════════════════════════════════
+   SECTION: Fábrica (Production Dashboard)
+   ══════════════════════════════════════ */
+
+.fabrica-bg {
+  background: #0a1520;
+  padding: 5rem 0;
+}
+.fabrica-inner {
+  max-width: var(--container); margin: 0 auto; padding: 0 2rem;
+}
+.fabrica-header { margin-bottom: 3rem; }
+.fabrica-header .section-title { color: white; }
+.fabrica-header .section-label span { color: var(--orange); }
+
+/* Metrics grid */
+.metrics-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem; margin-bottom: 4rem;
+}
+.metric-card {
+  background: rgba(0,123,153,0.15);
+  border: 1px solid rgba(0,123,153,0.3);
+  border-radius: 16px; padding: 2rem 1.5rem;
+  text-align: center; transition: all 0.3s;
+  position: relative; overflow: hidden;
+}
+.metric-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--blue), var(--orange));
+}
+.metric-card:hover {
+  background: rgba(0,123,153,0.25);
+  border-color: var(--blue);
+  transform: translateY(-4px);
+}
+.metric-num {
+  font-family: var(--font-heading);
+  font-weight: 800; font-size: 3.2rem;
+  color: var(--orange); line-height: 1; margin-bottom: 8px;
+}
+.metric-label {
+  font-size: 14px; font-weight: 600;
+  color: rgba(255,255,255,0.65);
+  text-transform: uppercase; letter-spacing: 0.06em;
+}
+
+/* Production pipeline */
+.pipeline-title {
+  font-family: var(--font-heading);
+  font-weight: 700; font-size: 1.3rem;
+  color: rgba(255,255,255,0.6);
+  text-transform: uppercase; letter-spacing: 0.1em;
+  margin-bottom: 1.5rem;
+}
+.pipeline {
+  display: flex; align-items: center;
+  gap: 0; overflow-x: auto; padding-bottom: 1rem;
+}
+.pipeline-stage {
+  flex: 1; min-width: 140px;
+  padding: 1.5rem 1rem; text-align: center;
+  border-radius: 12px; transition: all 0.3s;
+}
+.pipeline-stage:hover { transform: translateY(-4px); z-index: 2; }
+.pipeline-stage-icon {
+  width: 52px; height: 52px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 12px; font-size: 22px;
+}
+.pipeline-stage-count {
+  font-family: var(--font-heading);
+  font-weight: 800; font-size: 2rem;
+  line-height: 1; margin-bottom: 4px;
+}
+.pipeline-stage-label {
+  font-size: 12px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.08em; opacity: 0.8;
+}
+.pipeline-arrow {
+  font-size: 20px; color: rgba(255,255,255,0.2);
+  padding: 0 4px; flex-shrink: 0;
+}
+
+/* Stage color variants */
+.stage-idea  { background: rgba(243,146,0,0.12);   border: 1px solid rgba(243,146,0,0.3);    color: var(--orange); }
+.stage-mvp   { background: rgba(0,123,153,0.15);   border: 1px solid rgba(0,123,153,0.4);    color: #5bc8e5; }
+.stage-dev   { background: rgba(46,125,50,0.12);   border: 1px solid rgba(46,125,50,0.3);    color: #66bb6a; }
+.stage-test  { background: rgba(249,168,37,0.12);  border: 1px solid rgba(249,168,37,0.3);   color: var(--yellow); }
+.stage-pub   { background: rgba(132,133,133,0.12); border: 1px solid rgba(132,133,133,0.3);  color: #bdbdbd; }
+
+/* Responsive */
+@media (max-width: 900px) { .metrics-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) {
+  .metrics-grid { grid-template-columns: 1fr; }
+  .pipeline     { flex-direction: column; align-items: stretch; }
+  .pipeline-arrow { display: none; }
+}
