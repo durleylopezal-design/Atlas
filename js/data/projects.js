@@ -447,5 +447,41 @@ export const projects = [
     radicado: "PROPUESTA",
     initials: "RN",
     color: "#F39200"
+  },
+  {
+    id: 38,
+    nombre: "SADESC - Sistema de Análisis de Datos para la Dirección de Extensión y Servicios a la Comunidad",
+    tipo: "MVP",
+    estado: "Pruebas funcionales",
+    area: ["IA", "Educación"],
+    equipo: ["Equipo HADOOPERS", "Equipo CLOUDY"],
+    entidad: "Universidad Católica Luis Amigó - Dirección de Extensión",
+    radicado: "ISE009-2025-EXT-001",
+    initials: "SD",
+    color: "#007B99"
+  },
+  {
+    id: 39,
+    nombre: "CRM Extensión UCLA - Sistema de Gestión de Relaciones para la Unidad de Extensión",
+    tipo: "MVP",
+    estado: "En revisión",
+    area: ["IA", "Educación"],
+    equipo: ["Todo IAXpert"],
+    entidad: "Universidad Católica Luis Amigó - Unidad de Extensión",
+    radicado: "Discovery Phase v2.0",
+    initials: "CR",
+    color: "#005877"
+  },
+  {
+    id: 40,
+    nombre: "Plan Assessment 2025-02 - Automatización del Cruce de Resultados Académicos con Rúbricas RAP",
+    tipo: "MVP",
+    estado: "Pruebas funcionales",
+    area: ["IA", "Educación"],
+    equipo: ["Fernando Higuita Bedoya", "Durley López Alzate"],
+    entidad: "Universidad Católica Luis Amigó",
+    radicado: "Assessment 2025-02",
+    initials: "PA",
+    color: "#b45309"
   }
 ];
