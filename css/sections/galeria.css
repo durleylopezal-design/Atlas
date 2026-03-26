@@ -7,50 +7,160 @@
 .gallery-header { margin-bottom: 3rem; }
 .gallery-header .section-title { color: white; }
 
-/* Gallery items */
-.gallery-item {
-  overflow: hidden; border-radius: 14px;
-  position: relative; cursor: pointer;
-  background: #111; min-height: 220px;
-}
-.gallery-item img {
-  width: 100%; height: 100%;
-  object-fit: cover; display: block;
-  transition: transform 0.5s ease;
-}
-.gallery-item:hover img { transform: scale(1.05); }
-.gallery-item-tall { min-height: 300px; }
-
-/* Overlay */
-.gallery-item-overlay {
-  position: absolute; inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, transparent 55%);
-  opacity: 0; transition: opacity 0.3s;
-  display: flex; align-items: flex-end; padding: 1.2rem;
-}
-.gallery-item:hover .gallery-item-overlay { opacity: 1; }
-.gallery-item-caption {
-  font-size: 13px; font-weight: 600;
-  color: white; letter-spacing: 0.02em; line-height: 1.4;
+/* ── Carousel Block ── */
+.carousel-block {
+  margin-bottom: 4rem;
 }
 
-/* Tag badge */
-.gallery-tag {
-  position: absolute; top: 12px; left: 12px;
-  background: var(--orange); color: white;
-  font-size: 10px; font-weight: 700;
-  padding: 3px 10px; border-radius: 100px;
-  text-transform: uppercase; letter-spacing: 0.08em; z-index: 2;
+.carousel-event-header {
+  margin-bottom: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
-/* Row layouts */
-.gallery-row   { display: grid; gap: 1rem; }
-.gallery-row-2 { grid-template-columns: 1.5fr 1fr; }
-.gallery-row-3 { grid-template-columns: 1fr 1fr 1fr; }
+.carousel-event-num {
+  background: var(--orange);
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 100px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
 
-/* Responsive */
-@media (max-width: 900px) { .gallery-row-3 { grid-template-columns: 1fr 1fr; } }
+.carousel-event-title {
+  color: white;
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1.35;
+}
+
+/* ── Wrapper ── */
+.carousel-wrapper {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #000;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.45);
+}
+
+/* ── Track & Slides ── */
+.carousel-track {
+  position: relative;
+  width: 100%;
+  height: 500px;
+}
+
+.carousel-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  pointer-events: none;
+}
+
+.carousel-slide.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.carousel-slide img,
+.carousel-slide video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  background: #000;
+}
+
+/* ── Nav Buttons ── */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  color: white;
+  border: none;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  font-size: 1.7rem;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, transform 0.2s;
+  backdrop-filter: blur(4px);
+}
+
+.carousel-btn:hover {
+  background: var(--orange);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-btn-prev { left: 14px; }
+.carousel-btn-next { right: 14px; }
+
+/* ── Counter ── */
+.carousel-counter {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: rgba(0,0,0,0.55);
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 100px;
+  z-index: 10;
+  backdrop-filter: blur(4px);
+  letter-spacing: 0.05em;
+}
+
+/* ── Dots ── */
+.carousel-dots {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+
+.carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.35);
+  cursor: pointer;
+  transition: background 0.25s, transform 0.25s;
+  border: none;
+  padding: 0;
+}
+
+.carousel-dot.active {
+  background: var(--orange);
+  transform: scale(1.35);
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .carousel-track { height: 380px; }
+  .carousel-event-title { font-size: 0.95rem; }
+}
+
 @media (max-width: 600px) {
-  .gallery-row-2, .gallery-row-3 { grid-template-columns: 1fr; }
-  .gallery-item, .gallery-item-tall { min-height: 200px; }
+  .carousel-track { height: 260px; }
+  .carousel-btn { width: 36px; height: 36px; font-size: 1.3rem; }
+  .carousel-event-title { font-size: 0.85rem; }
+  .gallery-bg { padding: 3rem 0; }
 }

@@ -613,86 +613,216 @@
       <h2 class="section-title">Galería <span style="color:var(--orange)">IAXpert</span></h2>
     </div>
 
-    <!-- Row 1: wide + narrow -->
-    <div class="gallery-row gallery-row-2 fade-in" style="margin-bottom:1rem;">
-      <div class="gallery-item gallery-item-tall">
-        <div class="gallery-tag">CIIISOL 2025</div>
-        <img src="../assets/images/gallery-1.jpeg" alt="Ponencia en congreso internacional" loading="lazy">
-        <div class="gallery-item-overlay">
-          <span class="gallery-item-caption">Ponencia en congreso internacional</span>
-        </div>
+    <!-- ── Carrusel 1: Prototipos ── -->
+    <div class="carousel-block fade-in">
+      <div class="carousel-event-header">
+        <span class="carousel-event-num">Evento 01</span>
+        <h3 class="carousel-event-title">Algunos Prototipos Desarrollados Semillero IAXpert</h3>
       </div>
-      <div class="gallery-item">
-        <div class="gallery-tag">Congreso</div>
-        <img src="../assets/images/gallery-2.jpeg" alt="Acreditaciones IV Congreso CIIISOL" loading="lazy">
-        <div class="gallery-item-overlay">
-          <span class="gallery-item-caption">Acreditaciones IV Congreso CIIISOL</span>
+      <div class="carousel-wrapper">
+        <div class="carousel-track" id="carousel-prototipos">
+          <div class="carousel-slide active"><img src="../assets/images/ALGUNOS PROTOTIPOS DESARROLLADOS SEMILLERO IAXPERT/IMG_9076.jpg" alt="" loading="lazy"></div>
+          <div class="carousel-slide"><img src="../assets/images/ALGUNOS PROTOTIPOS DESARROLLADOS SEMILLERO IAXPERT/IMG_9077.jpg" alt="" loading="lazy"></div>
+          <div class="carousel-slide"><img src="../assets/images/ALGUNOS PROTOTIPOS DESARROLLADOS SEMILLERO IAXPERT/IMG_9078.jpg" alt="" loading="lazy"></div>
+          <div class="carousel-slide"><img src="../assets/images/ALGUNOS PROTOTIPOS DESARROLLADOS SEMILLERO IAXPERT/IMG_9079.jpg" alt="" loading="lazy"></div>
+          <div class="carousel-slide"><img src="../assets/images/ALGUNOS PROTOTIPOS DESARROLLADOS SEMILLERO IAXPERT/IMG_9080.jpg" alt="" loading="lazy"></div>
+          <div class="carousel-slide"><img src="../assets/images/ALGUNOS PROTOTIPOS DESARROLLADOS SEMILLERO IAXPERT/IMG_9083.jpg" alt="" loading="lazy"></div>
+          <div class="carousel-slide"><img src="../assets/images/ALGUNOS PROTOTIPOS DESARROLLADOS SEMILLERO IAXPERT/IMG_9084.jpg" alt="" loading="lazy"></div>
+          <div class="carousel-slide"><img src="../assets/images/ALGUNOS PROTOTIPOS DESARROLLADOS SEMILLERO IAXPERT/IMG_907687043356.jpg" alt="" loading="lazy"></div>
+          <div class="carousel-slide"><img src="../assets/images/ALGUNOS PROTOTIPOS DESARROLLADOS SEMILLERO IAXPERT/IMG_907787043362.jpg" alt="" loading="lazy"></div>
+          <div class="carousel-slide"><video controls preload="none" playsinline><source src="../assets/images/ALGUNOS PROTOTIPOS DESARROLLADOS SEMILLERO IAXPERT/ScreenRecording_10-15-2025 11-09-36_1.mp4" type="video/mp4"></video></div>
+          <div class="carousel-slide"><video controls preload="none" playsinline><source src="../assets/images/ALGUNOS PROTOTIPOS DESARROLLADOS SEMILLERO IAXPERT/ScreenRecording_10-15-2025 12-19-24_1.mp4" type="video/mp4"></video></div>
+        </div>
+        <button class="carousel-btn carousel-btn-prev" onclick="moveCarousel('carousel-prototipos', -1)">&#8249;</button>
+        <button class="carousel-btn carousel-btn-next" onclick="moveCarousel('carousel-prototipos',  1)">&#8250;</button>
+        <div class="carousel-counter">1 / 11</div>
+      </div>
+    </div>
+
+    <!-- ── Carrusel 2: MED360 ── -->
+    <div class="carousel-block fade-in">
+      <div class="carousel-event-header">
+        <span class="carousel-event-num">Evento 02</span>
+        <h3 class="carousel-event-title">Participación en MED360 Unterritorio Inteligente para la Gente 2025</h3>
+      </div>
+      <div class="carousel-wrapper">
+        <div class="carousel-track" id="carousel-med360">
+          <div class="carousel-slide active"><img src="../assets/images/PARTICIPACIÓN EN MED360 UNTERRITORIO INTELIGENTE PARA LA GENTE 2025/IMG_20251124_142409.jpg" alt="" loading="lazy"></div>
+          <div class="carousel-slide"><img src="../assets/images/PARTICIPACIÓN EN MED360 UNTERRITORIO INTELIGENTE PARA LA GENTE 2025/IMG_20251124_142547.jpg" alt="" loading="lazy"></div>
+          <div class="carousel-slide"><img src="../assets/images/PARTICIPACIÓN EN MED360 UNTERRITORIO INTELIGENTE PARA LA GENTE 2025/IMG_20251124_143029.jpg" alt="" loading="lazy"></div>
+          <div class="carousel-slide"><img src="../assets/images/PARTICIPACIÓN EN MED360 UNTERRITORIO INTELIGENTE PARA LA GENTE 2025/IMG_20251124_143854.jpg" alt="" loading="lazy"></div>
+          <div class="carousel-slide"><img src="../assets/images/PARTICIPACIÓN EN MED360 UNTERRITORIO INTELIGENTE PARA LA GENTE 2025/IMG_20251124_144036.jpg" alt="" loading="lazy"></div>
+          <div class="carousel-slide"><img src="../assets/images/PARTICIPACIÓN EN MED360 UNTERRITORIO INTELIGENTE PARA LA GENTE 2025/IMG_20251124_144227.jpg" alt="" loading="lazy"></div>
+          <div class="carousel-slide"><img src="../assets/images/PARTICIPACIÓN EN MED360 UNTERRITORIO INTELIGENTE PARA LA GENTE 2025/IMG_20251124_144535.jpg" alt="" loading="lazy"></div>
+        </div>
+        <button class="carousel-btn carousel-btn-prev" onclick="moveCarousel('carousel-med360', -1)">&#8249;</button>
+        <button class="carousel-btn carousel-btn-next" onclick="moveCarousel('carousel-med360',  1)">&#8250;</button>
+        <div class="carousel-counter">1 / 7</div>
+        <div class="carousel-dots">
+          <button class="carousel-dot active" onclick="goToSlide('carousel-med360', 0)"></button>
+          <button class="carousel-dot" onclick="goToSlide('carousel-med360', 1)"></button>
+          <button class="carousel-dot" onclick="goToSlide('carousel-med360', 2)"></button>
+          <button class="carousel-dot" onclick="goToSlide('carousel-med360', 3)"></button>
+          <button class="carousel-dot" onclick="goToSlide('carousel-med360', 4)"></button>
+          <button class="carousel-dot" onclick="goToSlide('carousel-med360', 5)"></button>
+          <button class="carousel-dot" onclick="goToSlide('carousel-med360', 6)"></button>
         </div>
       </div>
     </div>
 
-    <!-- Row 2: 3 cols -->
-    <div class="gallery-row gallery-row-3 fade-in" style="margin-bottom:1rem;">
-      <div class="gallery-item">
-        <div class="gallery-tag">Networking</div>
-        <img src="../assets/images/gallery-3.jpeg" alt="Networking con Dynatrace y MongoDB" loading="lazy">
-        <div class="gallery-item-overlay">
-          <span class="gallery-item-caption">Networking con Dynatrace y MongoDB</span>
-        </div>
+    <!-- ── Carrusel 3: CIIISOL 2025 ── -->
+    <div class="carousel-block fade-in">
+      <div class="carousel-event-header">
+        <span class="carousel-event-num">Evento 03</span>
+        <h3 class="carousel-event-title">Participación en IV Congreso Internacional de Ingeniería con Impacto Social – CIIISOL 2025</h3>
       </div>
-      <div class="gallery-item">
-        <div class="gallery-tag">CyberCampo</div>
-        <img src="../assets/images/gallery-4.jpeg" alt="Presentacion CyberCampo - PYMEs rurales" loading="lazy">
-        <div class="gallery-item-overlay">
-          <span class="gallery-item-caption">Presentacion CyberCampo — PYMEs rurales</span>
+      <div class="carousel-wrapper">
+        <div class="carousel-track" id="carousel-ciiisol">
+          <div class="carousel-slide active"><img src="../assets/images/PARTICIPACIÓN EN IV Congreso Internacional de Ingeniería con Impacto Social – CIIISOL 2025/2ADEFFB8-FF71-4E5D-B1C1-6C43941CB36E.jpg" alt="" loading="lazy"></div>
+          <div class="carousel-slide"><img src="../assets/images/PARTICIPACIÓN EN IV Congreso Internacional de Ingeniería con Impacto Social – CIIISOL 2025/85f7b7b1-659e-4ce7-a2d2-aa652cb5d721.jpg" alt="" loading="lazy"></div>
+          <div class="carousel-slide"><img src="../assets/images/PARTICIPACIÓN EN IV Congreso Internacional de Ingeniería con Impacto Social – CIIISOL 2025/c2b7d04f-1de3-4b73-ae91-0dc122c3d7b6.jpg" alt="" loading="lazy"></div>
+          <div class="carousel-slide"><img src="../assets/images/PARTICIPACIÓN EN IV Congreso Internacional de Ingeniería con Impacto Social – CIIISOL 2025/d2294ace-ed2b-43b2-94dc-ccdb854f7d6a.jpg" alt="" loading="lazy"></div>
+          <div class="carousel-slide"><img src="../assets/images/PARTICIPACIÓN EN IV Congreso Internacional de Ingeniería con Impacto Social – CIIISOL 2025/eed7948b-3aaf-49c0-ac75-c786c9d3ea66.jpg" alt="" loading="lazy"></div>
+          <div class="carousel-slide"><img src="../assets/images/PARTICIPACIÓN EN IV Congreso Internacional de Ingeniería con Impacto Social – CIIISOL 2025/WhatsApp Image 2026-03-23 at 24634 PM.jpeg" alt="" loading="lazy"></div>
+          <div class="carousel-slide"><img src="../assets/images/PARTICIPACIÓN EN IV Congreso Internacional de Ingeniería con Impacto Social – CIIISOL 2025/WhatsApp Image 2026-03-23 at 24635 PM (1).jpeg" alt="" loading="lazy"></div>
+          <div class="carousel-slide"><img src="../assets/images/PARTICIPACIÓN EN IV Congreso Internacional de Ingeniería con Impacto Social – CIIISOL 2025/WhatsApp Image 2026-03-23 at 24636 PM.jpeg" alt="" loading="lazy"></div>
+          <div class="carousel-slide"><img src="../assets/images/PARTICIPACIÓN EN IV Congreso Internacional de Ingeniería con Impacto Social – CIIISOL 2025/WhatsApp Image 2026-03-23 at 24637 PM.jpeg" alt="" loading="lazy"></div>
         </div>
+        <button class="carousel-btn carousel-btn-prev" onclick="moveCarousel('carousel-ciiisol', -1)">&#8249;</button>
+        <button class="carousel-btn carousel-btn-next" onclick="moveCarousel('carousel-ciiisol',  1)">&#8250;</button>
+        <div class="carousel-counter">1 / 9</div>
       </div>
-      <div class="gallery-item">
-        <div class="gallery-tag">GuardianNet</div>
-        <img src="../assets/images/gallery-5.jpeg" alt="GuardianNet: Firewall con impacto social" loading="lazy">
-        <div class="gallery-item-overlay">
-          <span class="gallery-item-caption">GuardianNet: Firewall con impacto social</span>
+    </div>
+
+    <!-- ── Carrusel 4: BINTEC 2025 ── -->
+    <div class="carousel-block fade-in">
+      <div class="carousel-event-header">
+        <span class="carousel-event-num">Evento 04</span>
+        <h3 class="carousel-event-title">Evento del Semillero BINTEC 2025 — Bancolombia</h3>
+      </div>
+      <div class="carousel-wrapper">
+        <div class="carousel-track" id="carousel-bintec">
+          <div class="carousel-slide active"><img src="../assets/images/EVENTO DEL SEMILLERO BINTEC 2025 BANCOLOMBIA/103083a5-84ed-4132-ab79-aefc65416883.jpg" alt="" loading="lazy"></div>
+          <div class="carousel-slide"><img src="../assets/images/EVENTO DEL SEMILLERO BINTEC 2025 BANCOLOMBIA/23fd306c-5855-48a3-9a28-b5cc619663a8.jpg" alt="" loading="lazy"></div>
+          <div class="carousel-slide"><img src="../assets/images/EVENTO DEL SEMILLERO BINTEC 2025 BANCOLOMBIA/28E1F7D3-68CC-441B-904D-811ECC1AD2ED.jpg" alt="" loading="lazy"></div>
+          <div class="carousel-slide"><img src="../assets/images/EVENTO DEL SEMILLERO BINTEC 2025 BANCOLOMBIA/5074FAB0-09B9-4F2A-AB72-DA096EDD7CFC.jpg" alt="" loading="lazy"></div>
+          <div class="carousel-slide"><img src="../assets/images/EVENTO DEL SEMILLERO BINTEC 2025 BANCOLOMBIA/5285bb0d-9fc1-4b4d-a244-cba884014b10.jpg" alt="" loading="lazy"></div>
+          <div class="carousel-slide"><img src="../assets/images/EVENTO DEL SEMILLERO BINTEC 2025 BANCOLOMBIA/67b18522-ed13-42e0-a94f-f3606a67705e.jpg" alt="" loading="lazy"></div>
+          <div class="carousel-slide"><img src="../assets/images/EVENTO DEL SEMILLERO BINTEC 2025 BANCOLOMBIA/6927d900-88d3-4493-9ae9-179a77a92954.jpg" alt="" loading="lazy"></div>
+          <div class="carousel-slide"><img src="../assets/images/EVENTO DEL SEMILLERO BINTEC 2025 BANCOLOMBIA/7d29b85e-38e4-46ef-a5d6-c7033c0627a0.jpg" alt="" loading="lazy"></div>
+          <div class="carousel-slide"><img src="../assets/images/EVENTO DEL SEMILLERO BINTEC 2025 BANCOLOMBIA/9D57ECDE-ADFF-4533-A515-3C0442F86D04.jpg" alt="" loading="lazy"></div>
+          <div class="carousel-slide"><img src="../assets/images/EVENTO DEL SEMILLERO BINTEC 2025 BANCOLOMBIA/E0AF1A75-76A7-4D3C-BE7C-519830BD2395.jpg" alt="" loading="lazy"></div>
+          <div class="carousel-slide"><img src="../assets/images/EVENTO DEL SEMILLERO BINTEC 2025 BANCOLOMBIA/bbf4d21c-517b-4c1b-bd74-163761cb1deb.jpg" alt="" loading="lazy"></div>
+          <div class="carousel-slide"><img src="../assets/images/EVENTO DEL SEMILLERO BINTEC 2025 BANCOLOMBIA/dbf1e2ed-c4ea-41e6-bfaa-fa9ba4e33726.jpg" alt="" loading="lazy"></div>
+          <div class="carousel-slide"><img src="../assets/images/EVENTO DEL SEMILLERO BINTEC 2025 BANCOLOMBIA/dff4196c-0c8b-4933-a8bd-7d4b81aee2fc.jpg" alt="" loading="lazy"></div>
+          <div class="carousel-slide"><img src="../assets/images/EVENTO DEL SEMILLERO BINTEC 2025 BANCOLOMBIA/e9e983c4-4821-4bf6-bd86-a5d024423a5f.jpg" alt="" loading="lazy"></div>
+          <div class="carousel-slide"><img src="../assets/images/EVENTO DEL SEMILLERO BINTEC 2025 BANCOLOMBIA/IMG_20251014_144126.jpg" alt="" loading="lazy"></div>
+          <div class="carousel-slide"><img src="../assets/images/EVENTO DEL SEMILLERO BINTEC 2025 BANCOLOMBIA/IMG_20251014_144450.jpg" alt="" loading="lazy"></div>
+          <div class="carousel-slide"><img src="../assets/images/EVENTO DEL SEMILLERO BINTEC 2025 BANCOLOMBIA/IMG_20251016_112022.jpg" alt="" loading="lazy"></div>
+          <div class="carousel-slide"><img src="../assets/images/EVENTO DEL SEMILLERO BINTEC 2025 BANCOLOMBIA/IMG_20251016_11202287043258.jpg" alt="" loading="lazy"></div>
+          <div class="carousel-slide"><img src="../assets/images/EVENTO DEL SEMILLERO BINTEC 2025 BANCOLOMBIA/IMG_20251016_120922.jpg" alt="" loading="lazy"></div>
+          <div class="carousel-slide"><img src="../assets/images/EVENTO DEL SEMILLERO BINTEC 2025 BANCOLOMBIA/IMG_20251016_121156_1.jpg" alt="" loading="lazy"></div>
+          <div class="carousel-slide"><img src="../assets/images/EVENTO DEL SEMILLERO BINTEC 2025 BANCOLOMBIA/IMG_20251016_122834.jpg" alt="" loading="lazy"></div>
+          <div class="carousel-slide"><img src="../assets/images/EVENTO DEL SEMILLERO BINTEC 2025 BANCOLOMBIA/IMG_20251016_12283487043259.jpg" alt="" loading="lazy"></div>
+          <div class="carousel-slide"><video controls preload="none" playsinline><source src="../assets/images/EVENTO DEL SEMILLERO BINTEC 2025 BANCOLOMBIA/VID_20251014_145024.mp4" type="video/mp4"></video></div>
+        </div>
+        <button class="carousel-btn carousel-btn-prev" onclick="moveCarousel('carousel-bintec', -1)">&#8249;</button>
+        <button class="carousel-btn carousel-btn-next" onclick="moveCarousel('carousel-bintec',  1)">&#8250;</button>
+        <div class="carousel-counter">1 / 23</div>
+      </div>
+    </div>
+
+    <!-- ── Carrusel 5: THEC SPHERE ── -->
+    <div class="carousel-block fade-in">
+      <div class="carousel-event-header">
+        <span class="carousel-event-num">Evento 05</span>
+        <h3 class="carousel-event-title">Participación THEC Sphere 2025 — Universidad de Antioquia</h3>
+      </div>
+      <div class="carousel-wrapper">
+        <div class="carousel-track" id="carousel-thec">
+          <div class="carousel-slide active"><img src="../assets/images/PARTICIPACIÓN THEC SPHERE 2025 UNIVERSIDAD DE ANTIOQUIA/2B1A6BC2-6BA1-4617-8586-1544A8718578.jpg" alt="" loading="lazy"></div>
+        </div>
+        <div class="carousel-counter">1 / 1</div>
+      </div>
+    </div>
+
+    <!-- ── Carrusel 6: DATAFEST ── -->
+    <div class="carousel-block fade-in">
+      <div class="carousel-event-header">
+        <span class="carousel-event-num">Evento 06</span>
+        <h3 class="carousel-event-title">Participación Workshop Privado en Datafest — Bancolombia 2025</h3>
+      </div>
+      <div class="carousel-wrapper">
+        <div class="carousel-track" id="carousel-datafest">
+          <div class="carousel-slide active"><img src="../assets/images/PARTICIPACIÓN WORKSHOP PRIVADO EN DATAFEST BANCOLOMBIA 2025/IMG_20250918_151802.jpg" alt="" loading="lazy"></div>
+          <div class="carousel-slide"><img src="../assets/images/PARTICIPACIÓN WORKSHOP PRIVADO EN DATAFEST BANCOLOMBIA 2025/IMG_20250918_151805.jpg" alt="" loading="lazy"></div>
+          <div class="carousel-slide"><img src="../assets/images/PARTICIPACIÓN WORKSHOP PRIVADO EN DATAFEST BANCOLOMBIA 2025/IMG_20250918_151811.jpg" alt="" loading="lazy"></div>
+          <div class="carousel-slide"><img src="../assets/images/PARTICIPACIÓN WORKSHOP PRIVADO EN DATAFEST BANCOLOMBIA 2025/IMG_20250918_155630.jpg" alt="" loading="lazy"></div>
+        </div>
+        <button class="carousel-btn carousel-btn-prev" onclick="moveCarousel('carousel-datafest', -1)">&#8249;</button>
+        <button class="carousel-btn carousel-btn-next" onclick="moveCarousel('carousel-datafest',  1)">&#8250;</button>
+        <div class="carousel-counter">1 / 4</div>
+        <div class="carousel-dots">
+          <button class="carousel-dot active" onclick="goToSlide('carousel-datafest', 0)"></button>
+          <button class="carousel-dot" onclick="goToSlide('carousel-datafest', 1)"></button>
+          <button class="carousel-dot" onclick="goToSlide('carousel-datafest', 2)"></button>
+          <button class="carousel-dot" onclick="goToSlide('carousel-datafest', 3)"></button>
         </div>
       </div>
     </div>
 
-    <!-- Row 3: 3 cols -->
-    <div class="gallery-row gallery-row-3 fade-in" style="margin-bottom:1rem;">
-      <div class="gallery-item">
-        <div class="gallery-tag">Investigacion</div>
-        <img src="../assets/images/gallery-6.jpeg" alt="Presentacion de poster cientifico" loading="lazy">
-        <div class="gallery-item-overlay">
-          <span class="gallery-item-caption">Presentación de póster científico</span>
-        </div>
+    <!-- ── Carrusel 7: EPM ── -->
+    <div class="carousel-block fade-in">
+      <div class="carousel-event-header">
+        <span class="carousel-event-num">Evento 07</span>
+        <h3 class="carousel-event-title">Visita a EPM &amp; Charla de Ciberseguridad</h3>
       </div>
-      <div class="gallery-item">
-        <img src="../assets/images/gallery-7.jpeg" alt="Exposición de investigación aplicada" loading="lazy">
-        <div class="gallery-item-overlay">
-          <span class="gallery-item-caption">Exposición de investigación aplicada</span>
+      <div class="carousel-wrapper">
+        <div class="carousel-track" id="carousel-epm">
+          <div class="carousel-slide active"><img src="../assets/images/VISITA A EPM &amp; CHARLA DE CIBERSEGURIDAD/IMG_20250815_082219.jpg" alt="" loading="lazy"></div>
+          <div class="carousel-slide"><img src="../assets/images/VISITA A EPM &amp; CHARLA DE CIBERSEGURIDAD/IMG_20250815_082223.jpg" alt="" loading="lazy"></div>
+          <div class="carousel-slide"><img src="../assets/images/VISITA A EPM &amp; CHARLA DE CIBERSEGURIDAD/IMG_20250815_085155.jpg" alt="" loading="lazy"></div>
+          <div class="carousel-slide"><img src="../assets/images/VISITA A EPM &amp; CHARLA DE CIBERSEGURIDAD/IMG_20250815_085210.jpg" alt="" loading="lazy"></div>
+          <div class="carousel-slide"><img src="../assets/images/VISITA A EPM &amp; CHARLA DE CIBERSEGURIDAD/IMG_20250815_085356.jpg" alt="" loading="lazy"></div>
+          <div class="carousel-slide"><img src="../assets/images/VISITA A EPM &amp; CHARLA DE CIBERSEGURIDAD/IMG_20250815_090800.jpg" alt="" loading="lazy"></div>
+          <div class="carousel-slide"><img src="../assets/images/VISITA A EPM &amp; CHARLA DE CIBERSEGURIDAD/IMG_20250815_091130.jpg" alt="" loading="lazy"></div>
+          <div class="carousel-slide"><img src="../assets/images/VISITA A EPM &amp; CHARLA DE CIBERSEGURIDAD/IMG_20250815_093917.jpg" alt="" loading="lazy"></div>
+          <div class="carousel-slide"><img src="../assets/images/VISITA A EPM &amp; CHARLA DE CIBERSEGURIDAD/IMG_20250815_102404.jpg" alt="" loading="lazy"></div>
+          <div class="carousel-slide"><img src="../assets/images/VISITA A EPM &amp; CHARLA DE CIBERSEGURIDAD/IMG_20250815_102427.jpg" alt="" loading="lazy"></div>
+          <div class="carousel-slide"><img src="../assets/images/VISITA A EPM &amp; CHARLA DE CIBERSEGURIDAD/IMG_20250815_104924.jpg" alt="" loading="lazy"></div>
+          <div class="carousel-slide"><img src="../assets/images/VISITA A EPM &amp; CHARLA DE CIBERSEGURIDAD/IMG_20250815_105004.jpg" alt="" loading="lazy"></div>
         </div>
-      </div>
-      <div class="gallery-item">
-        <img src="../assets/images/gallery-8.jpeg" alt="Campus universitario" loading="lazy">
-        <div class="gallery-item-overlay">
-          <span class="gallery-item-caption">Campus universitario</span>
-        </div>
+        <button class="carousel-btn carousel-btn-prev" onclick="moveCarousel('carousel-epm', -1)">&#8249;</button>
+        <button class="carousel-btn carousel-btn-next" onclick="moveCarousel('carousel-epm',  1)">&#8250;</button>
+        <div class="carousel-counter">1 / 12</div>
       </div>
     </div>
 
-    <!-- Row 4: wide + narrow -->
-    <div class="gallery-row gallery-row-2 fade-in">
-      <div class="gallery-item gallery-item-tall">
-        <div class="gallery-tag">Lab</div>
-        <img src="../assets/images/gallery-9.jpeg" alt="Sesiones de trabajo en laboratorio" loading="lazy">
-        <div class="gallery-item-overlay">
-          <span class="gallery-item-caption">Sesiones de trabajo en laboratorio</span>
-        </div>
+    <!-- ── Carrusel 8: Personalsoft ── -->
+    <div class="carousel-block fade-in">
+      <div class="carousel-event-header">
+        <span class="carousel-event-num">Evento 08</span>
+        <h3 class="carousel-event-title">Visita a Personalsoft &amp; Charla Mixta — Comunicación, Trabajo en Equipo y Marca Personal como Ingenieros de Sistemas</h3>
       </div>
-      <div class="gallery-item">
-        <img src="../assets/images/gallery-10.jpeg" alt="Equipo en sala de computo" loading="lazy">
-        <div class="gallery-item-overlay">
-          <span class="gallery-item-caption">Equipo en sala de computo</span>
+      <div class="carousel-wrapper">
+        <div class="carousel-track" id="carousel-personalsoft">
+          <div class="carousel-slide active"><img src="../assets/images/VISITA A PERSONALSOFT &amp; CHARLA MIXTA COMUNICACIÓN, TRABAJO EN EQUIPO Y MARCA PERSONAL COMO INGENIEROS DE SISTEMAS/IMG_20250821_090410.jpg" alt="" loading="lazy"></div>
+          <div class="carousel-slide"><img src="../assets/images/VISITA A PERSONALSOFT &amp; CHARLA MIXTA COMUNICACIÓN, TRABAJO EN EQUIPO Y MARCA PERSONAL COMO INGENIEROS DE SISTEMAS/IMG_20250821_102843.jpg" alt="" loading="lazy"></div>
+          <div class="carousel-slide"><img src="../assets/images/VISITA A PERSONALSOFT &amp; CHARLA MIXTA COMUNICACIÓN, TRABAJO EN EQUIPO Y MARCA PERSONAL COMO INGENIEROS DE SISTEMAS/IMG_20250821_131143.jpg" alt="" loading="lazy"></div>
+          <div class="carousel-slide"><img src="../assets/images/VISITA A PERSONALSOFT &amp; CHARLA MIXTA COMUNICACIÓN, TRABAJO EN EQUIPO Y MARCA PERSONAL COMO INGENIEROS DE SISTEMAS/IMG_20250821_132215.jpg" alt="" loading="lazy"></div>
+          <div class="carousel-slide"><img src="../assets/images/VISITA A PERSONALSOFT &amp; CHARLA MIXTA COMUNICACIÓN, TRABAJO EN EQUIPO Y MARCA PERSONAL COMO INGENIEROS DE SISTEMAS/IMG_20250821_133136.jpg" alt="" loading="lazy"></div>
+          <div class="carousel-slide"><img src="../assets/images/VISITA A PERSONALSOFT &amp; CHARLA MIXTA COMUNICACIÓN, TRABAJO EN EQUIPO Y MARCA PERSONAL COMO INGENIEROS DE SISTEMAS/IMG_20250821_134111.jpg" alt="" loading="lazy"></div>
+          <div class="carousel-slide"><img src="../assets/images/VISITA A PERSONALSOFT &amp; CHARLA MIXTA COMUNICACIÓN, TRABAJO EN EQUIPO Y MARCA PERSONAL COMO INGENIEROS DE SISTEMAS/IMG_20250821_141344.jpg" alt="" loading="lazy"></div>
+          <div class="carousel-slide"><img src="../assets/images/VISITA A PERSONALSOFT &amp; CHARLA MIXTA COMUNICACIÓN, TRABAJO EN EQUIPO Y MARCA PERSONAL COMO INGENIEROS DE SISTEMAS/IMG_20250821_145720.jpg" alt="" loading="lazy"></div>
+          <div class="carousel-slide"><img src="../assets/images/VISITA A PERSONALSOFT &amp; CHARLA MIXTA COMUNICACIÓN, TRABAJO EN EQUIPO Y MARCA PERSONAL COMO INGENIEROS DE SISTEMAS/IMG_20250821_145730.jpg" alt="" loading="lazy"></div>
+          <div class="carousel-slide"><img src="../assets/images/VISITA A PERSONALSOFT &amp; CHARLA MIXTA COMUNICACIÓN, TRABAJO EN EQUIPO Y MARCA PERSONAL COMO INGENIEROS DE SISTEMAS/IMG_20250821_145800.jpg" alt="" loading="lazy"></div>
+          <div class="carousel-slide"><img src="../assets/images/VISITA A PERSONALSOFT &amp; CHARLA MIXTA COMUNICACIÓN, TRABAJO EN EQUIPO Y MARCA PERSONAL COMO INGENIEROS DE SISTEMAS/IMG_20250821_154148.jpg" alt="" loading="lazy"></div>
+          <div class="carousel-slide"><img src="../assets/images/VISITA A PERSONALSOFT &amp; CHARLA MIXTA COMUNICACIÓN, TRABAJO EN EQUIPO Y MARCA PERSONAL COMO INGENIEROS DE SISTEMAS/IMG_20250821_155725.jpg" alt="" loading="lazy"></div>
+          <div class="carousel-slide"><img src="../assets/images/VISITA A PERSONALSOFT &amp; CHARLA MIXTA COMUNICACIÓN, TRABAJO EN EQUIPO Y MARCA PERSONAL COMO INGENIEROS DE SISTEMAS/IMG_20250821_164930.jpg" alt="" loading="lazy"></div>
         </div>
+        <button class="carousel-btn carousel-btn-prev" onclick="moveCarousel('carousel-personalsoft', -1)">&#8249;</button>
+        <button class="carousel-btn carousel-btn-next" onclick="moveCarousel('carousel-personalsoft',  1)">&#8250;</button>
+        <div class="carousel-counter">1 / 13</div>
       </div>
     </div>
 
@@ -841,7 +971,7 @@
         <div class="equipo-role-tag">Semillerista</div>
         <div class="equipo-social-links">
           <a href="https://www.linkedin.com/in/juan-jos%C3%A9-quinchia-nore%C3%B1a-a25b50311" target="_blank" class="social-link linkedin" title="LinkedIn"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
-          <a href="https://github.com/juanquinchia28" target="_blank" class="social-link github" title="GitHub"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg></a>
+          <a href="https://github.com/juanquinchia28" target="_blank" class="social-link github" title="GitHub"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg></a>
           <a href="https://scholar.google.com/citations?user=A1ESIgkAAAAJ" target="_blank" class="social-link scholar" title="Google Scholar"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 10a8 8 0 0 1 7.162 3.44L24 9.5z"/></svg></a>
           <a href="https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0002465474" target="_blank" class="social-link cvlac" title="CvLAC"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm4 18H6V4h7v5h5v11z"/></svg></a>
         </div>

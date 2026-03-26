@@ -7,6 +7,7 @@ import { filterProjects, setFilter } from './modules/filters.js';
 import { openModal, closeModal, closeModalBtn, initModalKeyboard } from './modules/modal.js';
 import { initScrollAnimations, animateHeroCounters, createParticles } from './modules/animations.js';
 import { initNavbarScroll, toggleMenu, closeMenu } from './modules/navbar.js';
+import { initCarousels } from './modules/carousel.js';
 
 /* ── Expose functions that the HTML calls via onclick ── */
 window.filterProjects = filterProjects;
@@ -25,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
   animateHeroCounters();
   initNavbarScroll();
   initModalKeyboard();
+  initCarousels();
 
   if (window.lucide) lucide.createIcons();
 });
