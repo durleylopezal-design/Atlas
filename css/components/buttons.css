@@ -53,6 +53,24 @@
 }
 .btn-contact:hover { transform: translateX(3px); filter: brightness(1.1); }
 
+/* Secondary action button for software cards */
+.btn-secondary-card {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 18px; border-radius: 9px;
+  font-size: 12.5px; font-weight: 700;
+  text-decoration: none; cursor: pointer;
+  color: var(--gray);
+  background: transparent;
+  border: 1.5px solid rgba(0,0,0,0.18);
+  transition: all 0.2s;
+  font-family: var(--font-body);
+}
+.btn-secondary-card:hover {
+  border-color: var(--orange);
+  color: var(--orange);
+  transform: translateX(3px);
+}
+
 .btn-cta-white {
   background: white; color: var(--orange);
   padding: 14px 28px; border-radius: 10px;

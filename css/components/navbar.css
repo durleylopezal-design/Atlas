@@ -115,6 +115,25 @@
   transform: scale(1.05);
 }
 
+/* Documents pill button in nav */
+.nav-docs-btn {
+  display: inline-flex; align-items: center; gap: 5px;
+  background: var(--blue); color: white !important;
+  padding: 6px 14px; border-radius: 20px;
+  font-size: 13px; font-weight: 700;
+  text-decoration: none;
+  transition: all 0.2s;
+  font-family: var(--font-body);
+  white-space: nowrap;
+}
+.nav-docs-btn::after { display: none !important; }
+.nav-docs-btn:hover {
+  background: var(--orange) !important;
+  color: white !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(243,146,0,0.35);
+}
+
 /* Hamburger */
 .hamburger {
   display: none;
@@ -149,4 +168,5 @@
   .nav-links       { display: none; }
   .hamburger       { display: flex; }
   .nav-university-logo { display: none; }
+  .nav-docs-btn    { display: none; }
 }
