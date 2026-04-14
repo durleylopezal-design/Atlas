@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portafolio de Proyectos IAXpert — Semillero de Investigación, Universidad Católica Luis Amigó.">
+  <title>Portafolio de Proyectos | Semillero IAXpert</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Source+Sans+3:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/umd/lucide.min.js"></script>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../css/main.css">
+
+  <style>
+    /* ── Page-specific overrides ── */
+    body { background: #f8fafb; }
+
+    .portfolio-page {
+      min-height: 100vh;
+      padding-top: var(--nav-height);
+    }
+
+    /* ── Page hero banner ── */
+    .portfolio-hero {
+      background: linear-gradient(135deg, #0a2a35 0%, #007B99 60%, #005f77 100%);
+      padding: 3rem 2rem 3.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .portfolio-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        radial-gradient(circle at 20% 50%, rgba(243,146,0,0.12) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255,255,255,0.05) 0%, transparent 40%);
+      pointer-events: none;
+    }
+    .portfolio-hero-inner {
+      max-width: 1300px; margin: 0 auto;
+      position: relative; z-index: 1;
+    }
+    .portfolio-back-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      color: rgba(255,255,255,0.7);
+      font-size: 13px; font-weight: 600;
+      font-family: var(--font-ui);
+      text-decoration: none;
+      padding: 6px 14px;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 100px;
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(6px);
+      transition: all 0.2s;
+      margin-bottom: 1.5rem;
+    }
+    .portfolio-back-btn:hover {
+      color: white;
+      background: rgba(255,255,255,0.15);
+      border-color: rgba(255,255,255,0.35);
+    }
+    .portfolio-hero-label {
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 0.75rem;
+    }
+    .portfolio-hero-label-line {
+      width: 32px; height: 2px; background: var(--orange);
+    }
+    .portfolio-hero-label span {
+      font-size: 11px; font-weight: 700;
+      color: var(--orange); text-transform: uppercase;
+      letter-spacing: 0.12em; font-family: var(--font-ui);
+    }
+    .portfolio-hero-title {
+      font-family: var(--font-heading);
+      font-weight: 800; font-size: clamp(2rem, 5vw, 3rem);
+      color: white; line-height: 1.1;
+      margin-bottom: 0.75rem;
+    }
+    .portfolio-hero-title span { color: var(--orange); }
+    .portfolio-hero-sub {
+      font-size: 15px;
+      color: rgba(255,255,255,0.6);
+      font-family: var(--font-body);
+    }
+
+    /* ── Main content area ── */
+    .portfolio-content {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 2.5rem 2rem 4rem;
+    }
+
+    /* ── Empty state ── */
+    .projects-empty {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 4rem 2rem;
+      color: var(--gray);
+    }
+    .projects-empty-icon { font-size: 3rem; margin-bottom: 1rem; }
+    .projects-empty p { font-size: 15px; margin-bottom: 1.5rem; }
+
+    /* ── Responsive adjustments ── */
+    @media (max-width: 768px) {
+      .portfolio-hero { padding: 2rem 1.5rem 2.5rem; }
+      .portfolio-content { padding: 1.5rem 1rem 3rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════════ NAV ════════ -->
+<nav class="nav" id="navbar">
+  <div class="nav-university-logo">
+    <img src="../assets/images/logo-universidad.png" alt="Universidad Católica Luis Amigó" class="university-logo-img">
+  </div>
+  <a href="index.html" class="nav-logo">
+    <div class="nav-logo-badge">IA</div>
+    <div class="nav-logo-text">
+      <div class="top">Universidad Católica Luis Amigó</div>
+      <div class="bottom">IAX<span>pert</span></div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#fabrica">Fábrica</a></li>
+    <li><a href="index.html#proyectos">Proyectos</a></li>
+    <li><a href="index.html#extension">Consultorio de SW</a></li>
+    <li><a href="index.html#lineas">Líneas</a></li>
+    <li><a href="index.html#galeria">Galería</a></li>
+    <li><a href="index.html#equipo">Equipo</a></li>
+    <li><a href="index.html#proyectos" class="nav-cta">Ver Portafolio</a></li>
+  </ul>
+  <a href="https://gestor-de-documentos-eight.vercel.app/index.html" target="_blank" rel="noopener noreferrer" class="nav-docs-btn">📄 Documentos</a>
+  <button class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html#fabrica"   onclick="closeMenu()">Fábrica</a>
+  <a href="index.html#proyectos" onclick="closeMenu()">Proyectos</a>
+  <a href="index.html#extension" onclick="closeMenu()">Consultorio de SW</a>
+  <a href="index.html#lineas"    onclick="closeMenu()">Líneas</a>
+  <a href="index.html#equipo"    onclick="closeMenu()">Equipo</a>
+  <a href="index.html#galeria"   onclick="closeMenu()">Galería</a>
+  <a href="https://gestor-de-documentos-eight.vercel.app/index.html" target="_blank" rel="noopener noreferrer" onclick="closeMenu()" style="color:var(--blue);">📄 Documentos ↗</a>
+</div>
+
+
+<!-- ════════ PAGE HERO ════════ -->
+<div class="portfolio-page">
+  <div class="portfolio-hero">
+    <div class="portfolio-hero-inner">
+      <a href="index.html#proyectos" class="portfolio-back-btn">← Volver al inicio</a>
+      <div class="portfolio-hero-label">
+        <div class="portfolio-hero-label-line"></div>
+        <span>Portafolio 2025</span>
+      </div>
+      <h1 class="portfolio-hero-title">
+        Portafolio de Proyectos <span>IAXpert</span>
+      </h1>
+      <p class="portfolio-hero-sub">
+        Explora todos los proyectos activos del semillero — filtra por tipo, estado o área temática.
+      </p>
+    </div>
+  </div>
+
+  <!-- ════════ FILTERS + GRID ════════ -->
+  <div class="portfolio-content">
+
+    <div class="filters-bar">
+      <div class="search-bar">
+        <span class="search-icon" data-lucide="search" style="width:18px;height:18px;"></span>
+        <input type="text" id="searchInput"
+               placeholder="Buscar proyectos por nombre, equipo o entidad..."
+               oninput="filterProjects()">
+      </div>
+
+      <div class="filter-group">
+        <span class="filter-group-label">Tipo:</span>
+        <button class="filter-btn active"  onclick="setFilter('tipo','todos',this)">Todos</button>
+        <button class="filter-btn" onclick="setFilter('tipo','MVP',this)">MVP</button>
+        <button class="filter-btn" onclick="setFilter('tipo','Investigación Aplicada',this)">Investigación</button>
+        <button class="filter-btn" onclick="setFilter('tipo','Memorias',this)">Memorias</button>
+        <button class="filter-btn" onclick="setFilter('tipo','Ponencia',this)">Ponencia</button>
+        <button class="filter-btn" onclick="setFilter('tipo','Ideas/Propuestas',this)">Ideas/Propuestas</button>
+      </div>
+
+      <div class="filter-group">
+        <span class="filter-group-label">Estado:</span>
+        <button class="filter-btn active"  onclick="setFilter('estado','todos',this)">Todos</button>
+        <button class="filter-btn" onclick="setFilter('estado','Pruebas funcionales',this)">Pruebas</button>
+        <button class="filter-btn" onclick="setFilter('estado','Aprobado',this)">Aprobado</button>
+        <button class="filter-btn" onclick="setFilter('estado','Esperando publicación',this)">En Espera Pub.</button>
+        <button class="filter-btn" onclick="setFilter('estado','Entregado sin respuesta',this)">Entregado</button>
+        <button class="filter-btn" onclick="setFilter('estado','En revisión',this)">En Revisión</button>
+      </div>
+
+      <div class="filter-group">
+        <span class="filter-group-label">Área:</span>
+        <button class="filter-btn active"  onclick="setFilter('area','todos',this)">Todos</button>
+        <button class="filter-btn" onclick="setFilter('area','IA',this)">IA & ML</button>
+        <button class="filter-btn" onclick="setFilter('area','Cuántica',this)">Cuántica</button>
+        <button class="filter-btn" onclick="setFilter('area','Ciberseguridad',this)">Ciberseguridad</button>
+        <button class="filter-btn" onclick="setFilter('area','Salud',this)">Salud</button>
+        <button class="filter-btn" onclick="setFilter('area','Social',this)">Social</button>
+        <button class="filter-btn" onclick="setFilter('area','Ambiental',this)">Ambiental</button>
+        <button class="filter-btn" onclick="setFilter('area','Educación',this)">Educación</button>
+      </div>
+    </div>
+
+    <div class="projects-meta">
+      <p class="projects-count">
+        Mostrando <strong id="visibleCount">40</strong> de <strong id="totalCount">40</strong> proyectos
+      </p>
+    </div>
+
+    <div class="projects-grid" id="projectsGrid"></div>
+
+  </div>
+</div>
+
+
+<!-- ════════ FOOTER ════════ -->
+<footer class="footer">
+  <div class="footer-stripe"></div>
+  <div class="footer-texture"></div>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo-badge">IA</div>
+      <div class="footer-brand-name">Semillero <span>IAXpert</span></div>
+      <div class="footer-brand-sub">Universidad Católica Luis Amigó</div>
+      <p class="footer-brand-desc">
+        Fábrica de Software e Investigación Aplicada. Construyendo el futuro
+        desde la academia colombiana con impacto real.
+      </p>
+    </div>
+
+    <div>
+      <div class="footer-col-title">Contacto</div>
+      <div class="footer-info-item">
+        <span class="footer-info-icon">📍</span>
+        <div class="footer-info-text">Transversal 51A No. 67B 90<br>Medellín, Colombia</div>
+      </div>
+      <div class="footer-info-item">
+        <span class="footer-info-icon">✉️</span>
+        <div class="footer-info-text">durley.lopezal@amigo.edu.co</div>
+      </div>
+      <div class="footer-info-item">
+        <span class="footer-info-icon">✉️</span>
+        <div class="footer-info-text">fernando.higuitabe@amigo.edu.co</div>
+      </div>
+      <div class="footer-info-item">
+        <span class="footer-info-icon">🌐</span>
+        <div class="footer-info-text">semillero.iaxpert@amigo.edu.co</div>
+      </div>
+      <div class="footer-info-item">
+        <span class="footer-info-icon">💼</span>
+        <a href="https://www.linkedin.com/in/semillero-de-investigaci%C3%B3n-iaxpert-facultad-de-ingenier%C3%ADa-y-arquitectura-884115378/"
+           target="_blank" class="footer-info-text" style="color:rgba(255,255,255,0.7);text-decoration:none;">
+          LinkedIn: Semillero IAXpert
+        </a>
+      </div>
+    </div>
+
+    <div>
+      <div class="footer-col-title">Líneas Activas</div>
+      <div class="footer-info-item">
+        <span class="footer-info-icon">🤖</span>
+        <div class="footer-info-text">Inteligencia Artificial & Datos</div>
+      </div>
+      <div class="footer-info-item">
+        <span class="footer-info-icon">⚛️</span>
+        <div class="footer-info-text">Tecnologías Cuánticas</div>
+      </div>
+      <div class="footer-info-item">
+        <span class="footer-info-icon">🛡️</span>
+        <div class="footer-info-text">Ciberseguridad & Impacto Social</div>
+      </div>
+      <div class="footer-info-item" style="margin-top:1rem;">
+        <span class="footer-info-icon">📋</span>
+        <div class="footer-info-text">40 proyectos activos 2025 I/II</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2025 Semillero IAXpert | Universidad Católica Luis Amigó</span>
+    <span class="footer-mission">"Formación humana y profesional al servicio del desarrollo y la transformación social"</span>
+  </div>
+</footer>
+
+
+<!-- ════════ MODAL ════════ -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+  <div class="modal" id="modalContent">
+    <button class="modal-close" onclick="closeModalBtn()">✕</button>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+
+<!-- Floating LinkedIn Button -->
+<a href="https://www.linkedin.com/in/semillero-de-investigaci%C3%B3n-iaxpert-facultad-de-ingenier%C3%ADa-y-arquitectura-884115378/"
+   target="_blank" class="fab-linkedin" title="Semillero IAXpert en LinkedIn">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+  </svg>
+  <div class="fab-tooltip">Semillero IAXpert</div>
+</a>
+
+
+<!-- Scripts (ES Modules) -->
+<script type="module" src="../js/main-proyectos.js"></script>
+
+</body>
+</html>
