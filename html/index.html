@@ -1256,6 +1256,44 @@
 <!-- Scripts (ES Modules) -->
 <script type="module" src="../js/main-index.js"></script>
 
+<!-- Hero override: reads iaxpert_hero from localStorage if set by admin panel -->
+<script>
+(function(){
+  try {
+    var raw = localStorage.getItem('iaxpert_hero');
+    if (!raw) return;
+    var h = JSON.parse(raw);
+    if (!h) return;
+    if (h.badge) {
+      var badgeEl = document.querySelector('.hero-badge span');
+      if (badgeEl) badgeEl.textContent = h.badge;
+    }
+    if (h.subtitle) {
+      var subEl = document.querySelector('.hero-subtitle');
+      if (subEl) subEl.textContent = h.subtitle;
+    }
+    if (h.desc) {
+      var descEl = document.querySelector('.hero-desc');
+      if (descEl) descEl.textContent = h.desc;
+    }
+    if (h.tags && Array.isArray(h.tags)) {
+      var tagsEl = document.querySelector('.hero-tags');
+      if (tagsEl && h.tags.length) {
+        tagsEl.innerHTML = h.tags.map(function(t){ return '<span class="hero-tag">'+t+'</span>'; }).join('');
+      }
+    }
+    if (h.btnPrimaryText) {
+      var btnP = document.querySelector('.hero-actions .btn-primary span:first-child');
+      if (btnP) btnP.textContent = h.btnPrimaryText;
+    }
+    if (h.btnOutlineText) {
+      var btnO = document.querySelector('.hero-actions .btn-outline');
+      if (btnO) btnO.textContent = h.btnOutlineText;
+    }
+  } catch(_) {}
+})();
+</script>
+
 <!-- Hidden admin trigger: 3 rapid clicks on the copyright text → admin.html -->
 <script>
 (function(){

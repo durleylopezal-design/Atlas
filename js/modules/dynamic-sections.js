@@ -4,12 +4,13 @@
    on index.html. Falls back to seed data on first visit.
 ══════════════════════════════════════════════════════ */
 
-import { initialSoftware, initialGaleria, initialEquipo } from '../data/initial-data.js';
+import { initialSoftware, initialGaleria, initialEquipo, GALERIA_SEED_VERSION } from '../data/initial-data.js';
 
 const KEYS = {
-  software: 'iaxpert_software',
-  galeria:  'iaxpert_galeria',
-  equipo:   'iaxpert_equipo',
+  software:  'iaxpert_software',
+  galeria:   'iaxpert_galeria',
+  galeriaSV: 'iaxpert_galeria_sv', // seed-version key
+  equipo:    'iaxpert_equipo',
 };
 
 /* ─── Force-show fade-in elements injected after IntersectionObserver ran ─── */
@@ -28,8 +29,25 @@ function loadOrSeed(key, initial) {
       if (Array.isArray(parsed) && parsed.length > 0) return parsed;
     }
   } catch (_) { /* ignore */ }
-  // First visit: seed with initial data
   localStorage.setItem(key, JSON.stringify(initial));
+  return initial;
+}
+
+/* ─── Versioned Load / Seed — force re-seed when seed version changes ─── */
+function loadOrSeedVersioned(key, versionKey, version, initial) {
+  try {
+    const storedVersion = parseInt(localStorage.getItem(versionKey) || '0', 10);
+    if (storedVersion >= version) {
+      const raw = localStorage.getItem(key);
+      if (raw) {
+        const parsed = JSON.parse(raw);
+        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+      }
+    }
+  } catch (_) { /* ignore */ }
+  // Version mismatch or missing: force re-seed
+  localStorage.setItem(key, JSON.stringify(initial));
+  localStorage.setItem(versionKey, String(version));
   return initial;
 }
 
@@ -185,7 +203,7 @@ export function initGaleriaSection() {
     });
   }
 
-  const data = loadOrSeed(KEYS.galeria, initialGaleria);
+  const data = loadOrSeedVersioned(KEYS.galeria, KEYS.galeriaSV, GALERIA_SEED_VERSION, initialGaleria);
   container.innerHTML = data.map((evt, i) => renderCarousel(evt, i)).join('');
   revealFadeIns(container);
 }
