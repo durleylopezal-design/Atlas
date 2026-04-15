@@ -12,6 +12,13 @@ const KEYS = {
   equipo:   'iaxpert_equipo',
 };
 
+/* ─── Force-show fade-in elements injected after IntersectionObserver ran ─── */
+function revealFadeIns(container) {
+  /* Include the container itself if it carries the class */
+  if (container.classList.contains('fade-in')) container.classList.add('visible');
+  container.querySelectorAll('.fade-in').forEach(el => el.classList.add('visible'));
+}
+
 /* ─── Load / Seed ─── */
 function loadOrSeed(key, initial) {
   try {
@@ -104,6 +111,7 @@ export function initSoftwareSection() {
   if (!container) return;
   const data = loadOrSeed(KEYS.software, initialSoftware);
   container.innerHTML = data.map(renderSoftwareCard).join('');
+  revealFadeIns(container);
   if (window.lucide) lucide.createIcons();
 }
 
@@ -179,6 +187,7 @@ export function initGaleriaSection() {
 
   const data = loadOrSeed(KEYS.galeria, initialGaleria);
   container.innerHTML = data.map((evt, i) => renderCarousel(evt, i)).join('');
+  revealFadeIns(container);
 }
 
 /* ══════════════════════════════════════════
@@ -196,10 +205,21 @@ function socialLinks(m) {
   return links.length ? `<div class="equipo-social-links">${links.join('')}</div>` : '';
 }
 
+/* ── Avatar: muestra foto si está disponible, si no las iniciales ── */
+function avatarContent(m, size = 60) {
+  if (m.foto) {
+    return `<img src="${m.foto}" alt="${m.nombre}"
+      style="width:100%;height:100%;object-fit:cover;border-radius:inherit;">`;
+  }
+  return m.iniciales;
+}
+
 function renderLiderCard(m) {
   return `
   <div class="lider-card">
-    <div class="lider-avatar" style="background:${m.color||'#007B99'}">${m.iniciales}</div>
+    <div class="lider-avatar" style="background:${m.color||'#007B99'};overflow:hidden;">
+      ${avatarContent(m, 80)}
+    </div>
     <div>
       <div class="lider-name">${m.nombre}</div>
       <div class="lider-role">${m.rol}</div>
@@ -212,10 +232,12 @@ function renderLiderCard(m) {
 function renderEquipoCard(m) {
   return `
   <div class="equipo-card">
-    <div class="equipo-avatar" style="background:${m.color||'#007B99'}">${m.iniciales}</div>
+    <div class="equipo-avatar" style="background:${m.color||'#007B99'};overflow:hidden;">
+      ${avatarContent(m, 60)}
+    </div>
     <div class="equipo-name">${m.nombre}</div>
     <div class="equipo-role-tag">${m.rol}</div>
-    ${m.semilleroColab ? `<div style="font-size:.72rem;color:rgba(255,255,255,.45);margin-top:.2rem">${m.semilleroColab}</div>` : ''}
+    ${m.semilleroColab ? `<div style="font-size:.72rem;color:var(--gray);margin-top:.2rem">${m.semilleroColab}</div>` : ''}
     ${socialLinks(m)}
   </div>`;
 }
@@ -241,8 +263,14 @@ export function initEquipoSection() {
   const lideres       = data.filter(m => m.rol === 'Líder' || m.rol === 'Profesor Investigador');
   const semilleristas = data.filter(m => m.rol !== 'Líder' && m.rol !== 'Profesor Investigador');
 
-  if (lideresContainer) lideresContainer.innerHTML = lideres.map(renderLiderCard).join('');
-  if (gridContainer)    gridContainer.innerHTML    = semilleristas.map(renderEquipoCard).join('');
+  if (lideresContainer) {
+    lideresContainer.innerHTML = lideres.map(renderLiderCard).join('');
+    revealFadeIns(lideresContainer);
+  }
+  if (gridContainer) {
+    gridContainer.innerHTML = semilleristas.map(renderEquipoCard).join('');
+    revealFadeIns(gridContainer);
+  }
 }
 
 /* ══════════════════════════════════════════

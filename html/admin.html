@@ -902,6 +902,11 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
         <input class="form-input" id="eq-correo" type="email" placeholder="nombre@amigo.edu.co">
       </div>
       <div class="form-group">
+        <label class="form-label">Foto (URL de imagen)</label>
+        <input class="form-input" id="eq-foto" type="url" placeholder="https://… o ruta relativa ../assets/…">
+        <div class="form-hint">Si se ingresa una URL de foto, reemplaza las iniciales en el avatar.</div>
+      </div>
+      <div class="form-group">
         <label class="form-label">Semillero colaborador (si aplica)</label>
         <input class="form-input" id="eq-colab" placeholder="ej: Semillero DIPOL">
       </div>
@@ -1537,7 +1542,11 @@ function renderEquipo(){
     <tr>
       <td>
         <div style="display:flex;align-items:center;gap:.6rem">
-          <div class="team-avatar" style="background:${m.color||'#007B99'}">${m.iniciales||'?'}</div>
+          <div class="team-avatar" style="background:${m.color||'#007B99'};overflow:hidden;">
+            ${m.foto
+              ? `<img src="${m.foto}" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">`
+              : m.iniciales||'?'}
+          </div>
           <div class="cell-name">${m.nombre}</div>
         </div>
       </td>
@@ -1558,6 +1567,7 @@ function openEquipoModal(m=null){
   document.getElementById('eq-initials').value = m?m.iniciales||'':'';
   document.getElementById('eq-rol').value      = m?m.rol:'';
   document.getElementById('eq-color').value    = m?m.color||'#007B99':'#007B99';
+  document.getElementById('eq-foto').value     = m?m.foto||'':'';
   document.getElementById('eq-correo').value   = m?m.correo||'':'';
   document.getElementById('eq-colab').value    = m?m.semilleroColab||'':'';
   document.getElementById('eq-linkedin').value = m?m.linkedin||'':'';
@@ -1583,6 +1593,7 @@ function saveEquipo(){
     iniciales: document.getElementById('eq-initials').value.trim().toUpperCase(),
     rol:     document.getElementById('eq-rol').value,
     color:   document.getElementById('eq-color').value.trim()||'#007B99',
+    foto:    document.getElementById('eq-foto').value.trim(),
     correo:  document.getElementById('eq-correo').value.trim(),
     semilleroColab: document.getElementById('eq-colab').value.trim(),
     linkedin: document.getElementById('eq-linkedin').value.trim(),
