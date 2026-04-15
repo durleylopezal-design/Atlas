@@ -303,8 +303,8 @@
       </div>
     </div>
 
-    <!-- Software cards -->
-    <div class="software-grid">
+    <!-- Software cards — populated dynamically from localStorage by js/modules/dynamic-sections.js -->
+    <div class="software-grid" id="software-dynamic-grid">
 
       <!-- SADESC -->
       <div class="software-card fade-in">
@@ -709,6 +709,9 @@
       <h2 class="section-title">Galería <span style="color:var(--orange)">IAXpert</span></h2>
     </div>
 
+    <!-- Dynamic gallery rendered from localStorage — hardcoded carousels below are hidden by JS -->
+    <div id="galeria-dynamic-container"></div>
+
     <!-- ── Carrusel 1: Prototipos ── -->
     <div class="carousel-block fade-in">
       <div class="carousel-event-header">
@@ -942,7 +945,10 @@
       </div>
     </div>
 
-    <!-- Leaders -->
+    <!-- Dynamic team rendered from localStorage — hardcoded grids below are hidden by JS -->
+    <div id="equipo-dynamic-lideres" class="lideres-grid fade-in"></div>
+
+    <!-- Leaders (hardcoded fallback, hidden by JS when localStorage is populated) -->
     <div class="lideres-grid fade-in">
       <div class="lider-card">
         <div class="lider-avatar">DL</div>
@@ -979,7 +985,9 @@
     </div>
 
     <div class="equipo-section-label fade-in">Semilleristas Activos IAXpert</div>
+    <div id="equipo-dynamic-grid" class="equipo-grid fade-in"></div>
 
+    <!-- Hardcoded grid (hidden by JS when localStorage is populated) -->
     <div class="equipo-grid fade-in">
       <div class="equipo-card">
         <div class="equipo-avatar" style="background:#007B99;">YC</div>
@@ -1220,7 +1228,7 @@
   </div>
 
   <div class="footer-bottom">
-    <span class="footer-copy">© 2025 Semillero IAXpert | Universidad Católica Luis Amigó</span>
+    <span class="footer-copy" id="admin-trigger" style="cursor:default;user-select:none;">© 2025 Semillero IAXpert | Universidad Católica Luis Amigó</span>
     <span class="footer-mission">"Formación humana y profesional al servicio del desarrollo y la transformación social"</span>
   </div>
 </footer>
@@ -1247,6 +1255,26 @@
 
 <!-- Scripts (ES Modules) -->
 <script type="module" src="../js/main-index.js"></script>
+
+<!-- Hidden admin trigger: 3 rapid clicks on the copyright text → admin.html -->
+<script>
+(function(){
+  var clicks=0, timer=null;
+  var el=document.getElementById('admin-trigger');
+  if(!el) return;
+  el.addEventListener('click',function(){
+    clicks++;
+    if(clicks===1){
+      timer=setTimeout(function(){ clicks=0; },900);
+    }
+    if(clicks>=3){
+      clearTimeout(timer);
+      clicks=0;
+      window.location.href='admin.html';
+    }
+  });
+})();
+</script>
 
 </body>
 </html>

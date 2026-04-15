@@ -5,8 +5,21 @@
    real-time filtering without redirecting.
    ══════════════════════════════════════ */
 
-import { projects }                           from './data/projects.js';
+import { projects as _hardcodedProjects }      from './data/projects.js';
 import { renderCard }                         from './modules/render.js';
+
+/* ── Prefer localStorage data; fall back to hardcoded ── */
+function loadProjects() {
+  try {
+    const raw = localStorage.getItem('iaxpert_proyectos');
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+    }
+  } catch (_) { /* ignore */ }
+  return _hardcodedProjects;
+}
+const projects = loadProjects();
 import { initScrollAnimations }               from './modules/animations.js';
 import { initNavbarScroll, toggleMenu,
          closeMenu }                          from './modules/navbar.js';
