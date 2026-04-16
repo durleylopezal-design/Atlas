@@ -3,12 +3,25 @@
    Project detail overlay
    ══════════════════════════════════════ */
 
-import { projects } from '../data/projects.js';
+import { projects as _hardcoded } from '../data/projects.js';
 import { getTipoBadgeClass, getEstadoBadgeClass } from './render.js';
+
+function _loadProjects() {
+  try {
+    const raw = localStorage.getItem('iaxpert_proyectos');
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+    }
+  } catch (_) {}
+  return _hardcoded;
+}
 
 /** Opens the detail modal for a given project ID */
 export function openModal(id) {
-  const p = projects.find(x => x.id === id);
+  const projects = _loadProjects();
+  // id may be number or string depending on source
+  const p = projects.find(x => String(x.id) === String(id));
   if (!p) return;
 
   document.getElementById('modalBody').innerHTML = `
@@ -53,6 +66,16 @@ export function openModal(id) {
     </div>
 
     <div class="modal-divider"></div>
+    ${p.infoLink ? `<div style="text-align:center;margin-bottom:.75rem">
+      <a href="${p.infoLink}" target="_blank" rel="noopener noreferrer"
+         style="display:inline-flex;align-items:center;gap:6px;background:rgba(243,146,0,0.08);
+         border:1.5px solid rgba(243,146,0,0.35);color:#d97d00;border-radius:8px;
+         padding:8px 18px;font-size:13px;font-weight:700;text-decoration:none;transition:all .2s;"
+         onmouseover="this.style.background='rgba(243,146,0,0.15)'"
+         onmouseout="this.style.background='rgba(243,146,0,0.08)'">
+        📄 Más información ↗
+      </a>
+    </div>` : ''}
     <div style="font-size:12px;color:var(--gray);text-align:center;">
       Semillero IAXpert | Universidad Católica Luis Amigó — 2025
     </div>`;
