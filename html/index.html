@@ -119,62 +119,62 @@
         <div class="section-label-line"></div>
         <span>Dashboard de Producción</span>
       </div>
-      <h2 class="section-title">La <span style="color:var(--orange)">Fábrica</span> de Software</h2>
-      <p style="color:rgba(255,255,255,0.55); margin-top:0.75rem; font-size:1rem; max-width:500px;">
+      <h2 class="section-title" id="fabrica-titulo">La <span style="color:var(--orange)">Fábrica</span> de Software</h2>
+      <p id="fabrica-subtitle" style="color:rgba(255,255,255,0.55); margin-top:0.75rem; font-size:1rem; max-width:500px;">
         Métricas en tiempo real del semillero. Cada proyecto es una unidad de producción en movimiento.
       </p>
     </div>
 
-    <div class="metrics-grid">
+    <div class="metrics-grid" id="fabrica-metrics-grid">
       <div class="metric-card fade-in">
-        <div class="metric-num counter-num" data-target="40">0</div>
-        <div class="metric-label">Proyectos Totales</div>
+        <div class="metric-num counter-num" id="fabrica-m0-num" data-target="40">0</div>
+        <div class="metric-label" id="fabrica-m0-label">Proyectos Totales</div>
       </div>
       <div class="metric-card fade-in">
-        <div class="metric-num counter-num" data-target="5">0</div>
-        <div class="metric-label">Estados Activos</div>
+        <div class="metric-num counter-num" id="fabrica-m1-num" data-target="5">0</div>
+        <div class="metric-label" id="fabrica-m1-label">Estados Activos</div>
       </div>
       <div class="metric-card fade-in">
-        <div class="metric-num counter-num" data-target="3">0</div>
-        <div class="metric-label">Líneas de Investigación</div>
+        <div class="metric-num counter-num" id="fabrica-m2-num" data-target="3">0</div>
+        <div class="metric-label" id="fabrica-m2-label">Líneas de Investigación</div>
       </div>
       <div class="metric-card fade-in">
-        <div class="metric-num counter-num" data-target="15">0</div>
-        <div class="metric-label">Semilleristas Activos</div>
+        <div class="metric-num counter-num" id="fabrica-m3-num" data-target="15">0</div>
+        <div class="metric-label" id="fabrica-m3-label">Semilleristas Activos</div>
       </div>
     </div>
 
     <div class="fade-in">
       <div class="pipeline-title">⚙️ Pipeline de Producción</div>
-      <div class="pipeline">
+      <div class="pipeline" id="fabrica-pipeline">
         <div class="pipeline-stage stage-idea">
-          <div class="pipeline-stage-icon">💡</div>
-          <div class="pipeline-stage-count">4</div>
-          <div class="pipeline-stage-label">Idea / Propuesta</div>
+          <div class="pipeline-stage-icon" id="fabrica-p0-icon">💡</div>
+          <div class="pipeline-stage-count" id="fabrica-p0-count">4</div>
+          <div class="pipeline-stage-label" id="fabrica-p0-label">Idea / Propuesta</div>
         </div>
         <div class="pipeline-arrow">→</div>
         <div class="pipeline-stage stage-mvp">
-          <div class="pipeline-stage-icon">🚀</div>
-          <div class="pipeline-stage-count">7</div>
-          <div class="pipeline-stage-label">MVP / Entregado</div>
+          <div class="pipeline-stage-icon" id="fabrica-p1-icon">🚀</div>
+          <div class="pipeline-stage-count" id="fabrica-p1-count">7</div>
+          <div class="pipeline-stage-label" id="fabrica-p1-label">MVP / Entregado</div>
         </div>
         <div class="pipeline-arrow">→</div>
         <div class="pipeline-stage stage-dev">
-          <div class="pipeline-stage-icon">🔬</div>
-          <div class="pipeline-stage-count">19</div>
-          <div class="pipeline-stage-label">Investigación / Revisión</div>
+          <div class="pipeline-stage-icon" id="fabrica-p2-icon">🔬</div>
+          <div class="pipeline-stage-count" id="fabrica-p2-count">19</div>
+          <div class="pipeline-stage-label" id="fabrica-p2-label">Investigación / Revisión</div>
         </div>
         <div class="pipeline-arrow">→</div>
         <div class="pipeline-stage stage-test">
-          <div class="pipeline-stage-icon">✅</div>
-          <div class="pipeline-stage-count">7</div>
-          <div class="pipeline-stage-label">Aprobado / Publicación</div>
+          <div class="pipeline-stage-icon" id="fabrica-p3-icon">✅</div>
+          <div class="pipeline-stage-count" id="fabrica-p3-count">7</div>
+          <div class="pipeline-stage-label" id="fabrica-p3-label">Aprobado / Publicación</div>
         </div>
         <div class="pipeline-arrow">→</div>
         <div class="pipeline-stage stage-pub">
-          <div class="pipeline-stage-icon">🧪</div>
-          <div class="pipeline-stage-count">1</div>
-          <div class="pipeline-stage-label">Pruebas Funcionales</div>
+          <div class="pipeline-stage-icon" id="fabrica-p4-icon">🧪</div>
+          <div class="pipeline-stage-count" id="fabrica-p4-count">1</div>
+          <div class="pipeline-stage-label" id="fabrica-p4-label">Pruebas Funcionales</div>
         </div>
       </div>
     </div>
@@ -251,16 +251,16 @@
     <div class="ext-hero fade-in">
       <div>
         <div class="ext-hero-eyebrow">
-          <span>Proyectos de Extensión y Software</span>
+          <span id="ext-eyebrow">Proyectos de Extensión y Software</span>
         </div>
-        <h2>Software que <span>transforma</span><br>instituciones reales</h2>
-        <p class="ext-hero-desc">
+        <h2 id="ext-titulo">Software que <span>transforma</span><br>instituciones reales</h2>
+        <p class="ext-hero-desc" id="ext-desc">
           IAXpert no solo investiga: <strong style="color:white;">construye</strong>. Desarrollamos productos de software
           institucional de alto impacto para la Universidad Católica Luis Amigó, combinando
           metodologías ágiles, arquitecturas modernas y visión de negocio.
           Cada proyecto es una solución lista para producción.
         </p>
-        <div class="ext-hero-tags">
+        <div class="ext-hero-tags" id="ext-tags">
           <span class="ext-hero-tag">Java Spring Boot</span>
           <span class="ext-hero-tag">Angular</span>
           <span class="ext-hero-tag">Python</span>
@@ -269,22 +269,22 @@
           <span class="ext-hero-tag">Business Intelligence</span>
         </div>
       </div>
-      <div class="ext-hero-stats">
+      <div class="ext-hero-stats" id="ext-stats">
         <div class="ext-hero-stat">
-          <div class="ext-hero-stat-num">3</div>
-          <div class="ext-hero-stat-label">Productos en desarrollo</div>
+          <div class="ext-hero-stat-num" id="ext-s0-num">3</div>
+          <div class="ext-hero-stat-label" id="ext-s0-label">Productos en desarrollo</div>
         </div>
         <div class="ext-hero-stat">
-          <div class="ext-hero-stat-num">5</div>
-          <div class="ext-hero-stat-label">Sedes beneficiadas</div>
+          <div class="ext-hero-stat-num" id="ext-s1-num">5</div>
+          <div class="ext-hero-stat-label" id="ext-s1-label">Sedes beneficiadas</div>
         </div>
         <div class="ext-hero-stat">
-          <div class="ext-hero-stat-num">16</div>
-          <div class="ext-hero-stat-label">Semanas de entrega</div>
+          <div class="ext-hero-stat-num" id="ext-s2-num">16</div>
+          <div class="ext-hero-stat-label" id="ext-s2-label">Semanas de entrega</div>
         </div>
         <div class="ext-hero-stat">
-          <div class="ext-hero-stat-num">100%</div>
-          <div class="ext-hero-stat-label">Open source institucional</div>
+          <div class="ext-hero-stat-num" id="ext-s3-num">100%</div>
+          <div class="ext-hero-stat-label" id="ext-s3-label">Open source institucional</div>
         </div>
       </div>
     </div>
@@ -1289,6 +1289,78 @@
     if (h.btnOutlineText) {
       var btnO = document.querySelector('.hero-actions .btn-outline');
       if (btnO) btnO.textContent = h.btnOutlineText;
+    }
+  } catch(_) {}
+})();
+</script>
+
+<!-- Fábrica override: reads iaxpert_fabrica from localStorage if set by admin panel -->
+<script>
+(function(){
+  try {
+    var raw = localStorage.getItem('iaxpert_fabrica');
+    if (!raw) return;
+    var f = JSON.parse(raw);
+    if (!f) return;
+    if (f.subtitle) {
+      var el = document.getElementById('fabrica-subtitle');
+      if (el) el.textContent = f.subtitle;
+    }
+    if (f.metrics && Array.isArray(f.metrics)) {
+      f.metrics.forEach(function(m, i) {
+        var numEl = document.getElementById('fabrica-m'+i+'-num');
+        var lblEl = document.getElementById('fabrica-m'+i+'-label');
+        if (numEl) { numEl.textContent = m.num; numEl.setAttribute('data-target', m.num); }
+        if (lblEl) lblEl.textContent = m.label;
+      });
+    }
+    if (f.pipeline && Array.isArray(f.pipeline)) {
+      f.pipeline.forEach(function(p, i) {
+        var iconEl  = document.getElementById('fabrica-p'+i+'-icon');
+        var cntEl   = document.getElementById('fabrica-p'+i+'-count');
+        var lblEl   = document.getElementById('fabrica-p'+i+'-label');
+        if (iconEl)  iconEl.textContent  = p.icon;
+        if (cntEl)   cntEl.textContent   = p.count;
+        if (lblEl)   lblEl.textContent   = p.label;
+      });
+    }
+  } catch(_) {}
+})();
+</script>
+
+<!-- Extensión override: reads iaxpert_extension from localStorage if set by admin panel -->
+<script>
+(function(){
+  try {
+    var raw = localStorage.getItem('iaxpert_extension');
+    if (!raw) return;
+    var x = JSON.parse(raw);
+    if (!x) return;
+    if (x.eyebrow) {
+      var el = document.getElementById('ext-eyebrow');
+      if (el) el.textContent = x.eyebrow;
+    }
+    if (x.titulo) {
+      var el = document.getElementById('ext-titulo');
+      if (el) el.innerHTML = x.titulo;
+    }
+    if (x.desc) {
+      var el = document.getElementById('ext-desc');
+      if (el) el.textContent = x.desc;
+    }
+    if (x.tags && Array.isArray(x.tags)) {
+      var el = document.getElementById('ext-tags');
+      if (el && x.tags.length) {
+        el.innerHTML = x.tags.map(function(t){ return '<span class="ext-hero-tag">'+t+'</span>'; }).join('');
+      }
+    }
+    if (x.stats && Array.isArray(x.stats)) {
+      x.stats.forEach(function(s, i) {
+        var numEl = document.getElementById('ext-s'+i+'-num');
+        var lblEl = document.getElementById('ext-s'+i+'-label');
+        if (numEl) numEl.textContent = s.num;
+        if (lblEl) lblEl.textContent = s.label;
+      });
     }
   } catch(_) {}
 })();

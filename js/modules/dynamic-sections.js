@@ -5,6 +5,7 @@
 ══════════════════════════════════════════════════════ */
 
 import { initialSoftware, initialGaleria, initialEquipo, GALERIA_SEED_VERSION } from '../data/initial-data.js';
+import { createLightbox } from './carousel.js';
 
 const KEYS = {
   software:  'iaxpert_software',
@@ -144,9 +145,10 @@ function renderCarousel(event, index) {
   const total = imgs.length;
 
   const slides = imgs.map((url, i) => {
-    const isImg = /\.(jpe?g|png|gif|webp|svg)$/i.test(url);
+    const isImg = /^data:image\/|\.(?:jpe?g|png|gif|webp|svg)$/i.test(url);
     const media = isImg
-      ? `<img src="${url}" alt="" loading="lazy">`
+      ? `<img src="${url}" alt="" loading="lazy" style="cursor:zoom-in"
+           onclick="event.stopPropagation();openLightbox(this.src)">`
       : `<video controls preload="none" playsinline><source src="${url}" type="video/mp4"></video>`;
     return `<div class="carousel-slide${i === 0 ? ' active' : ''}">${media}</div>`;
   }).join('');
@@ -194,6 +196,7 @@ window.dynCarouselMove = function(carId, dir) {
 export function initGaleriaSection() {
   const container = document.getElementById('galeria-dynamic-container');
   if (!container) return;
+  createLightbox(); // ensure lightbox DOM exists for dynamic images
 
   /* Hide hardcoded carousel blocks (siblings within .gallery-inner) */
   const galleryInner = container.closest('.gallery-inner');

@@ -57,7 +57,11 @@ export function renderCard(p) {
       <div class="card-entidad">${p.entidad}</div>
       <div class="card-footer">
         <span class="card-radicado">${radicadoLabel}</span>
-        <button class="btn-ver">Ver más →</button>
+        <div style="display:flex;gap:.4rem;align-items:center">
+          ${p.infoLink ? `<a href="${p.infoLink}" target="_blank" rel="noopener noreferrer"
+            class="btn-info" onclick="event.stopPropagation()">📄 Más info ↗</a>` : ''}
+          <button class="btn-ver">Ver más →</button>
+        </div>
       </div>
     </div>`;
 }

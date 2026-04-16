@@ -561,6 +561,12 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
     <button class="sidebar-item" data-section="hero" onclick="showSection('hero',this)">
       <span class="sidebar-icon">🏠</span>Sección Hero
     </button>
+    <button class="sidebar-item" data-section="extension" onclick="showSection('extension',this)">
+      <span class="sidebar-icon">🧩</span>Sección Presentación
+    </button>
+    <button class="sidebar-item" data-section="fabrica" onclick="showSection('fabrica',this)">
+      <span class="sidebar-icon">📊</span>Dashboard de Producción
+    </button>
     <div class="sidebar-divider"></div>
     <div class="sidebar-section-label">Sistema</div>
     <button class="sidebar-item" id="admins-menu-item" data-section="admins" onclick="showSection('admins',this)" style="display:none">
@@ -733,6 +739,62 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
       </div>
     </div>
 
+    <!-- ── SECCIÓN PRESENTACIÓN ── -->
+    <div class="section-panel" id="section-extension">
+      <div class="section-header">
+        <div class="section-title-row">
+          <span class="section-icon">🧩</span>
+          <h2 class="section-heading">Sección de Presentación</h2>
+        </div>
+        <button class="btn-save" onclick="saveExtension()">Guardar cambios</button>
+      </div>
+      <div class="profile-card" style="max-width:720px">
+        <div class="form-group">
+          <label class="form-label">Etiqueta superior (eyebrow)</label>
+          <input class="form-input" id="ext-eyebrow-input" placeholder="Proyectos de Extensión y Software">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Título (admite HTML básico: &lt;span&gt;, &lt;br&gt;)</label>
+          <input class="form-input" id="ext-titulo-input" placeholder="Software que &lt;span&gt;transforma&lt;/span&gt;&lt;br&gt;instituciones reales">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Descripción</label>
+          <textarea class="form-textarea" id="ext-desc-input" style="min-height:90px"
+            placeholder="IAXpert no solo investiga…"></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Tags de tecnología (uno por línea)</label>
+          <textarea class="form-textarea" id="ext-tags-input" style="min-height:80px"
+            placeholder="Java Spring Boot&#10;Angular&#10;Python&#10;MySQL"></textarea>
+          <div class="form-hint">Un tag por línea.</div>
+        </div>
+        <div style="font-size:.8rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin:1rem 0 .5rem">Estadísticas (4 cifras)</div>
+        <div id="ext-stats-inputs"></div>
+      </div>
+    </div>
+
+    <!-- ── DASHBOARD DE PRODUCCIÓN ── -->
+    <div class="section-panel" id="section-fabrica">
+      <div class="section-header">
+        <div class="section-title-row">
+          <span class="section-icon">📊</span>
+          <h2 class="section-heading">Dashboard de Producción</h2>
+        </div>
+        <button class="btn-save" onclick="saveFabrica()">Guardar cambios</button>
+      </div>
+      <div class="profile-card" style="max-width:720px">
+        <div class="form-group">
+          <label class="form-label">Subtítulo de la sección</label>
+          <input class="form-input" id="fabrica-subtitle-input"
+            placeholder="Métricas en tiempo real del semillero…">
+        </div>
+        <div style="font-size:.8rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin:1rem 0 .5rem">Métricas (4 tarjetas)</div>
+        <div id="fabrica-metrics-inputs"></div>
+        <div style="font-size:.8rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin:1.25rem 0 .5rem">Pipeline de Producción (5 etapas)</div>
+        <div id="fabrica-pipeline-inputs"></div>
+      </div>
+    </div>
+
     <!-- ── MI PERFIL ── -->
     <div class="section-panel" id="section-perfil">
       <div class="section-header">
@@ -883,6 +945,11 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
         <label class="form-label">Equipo (separado por comas)</label>
         <input class="form-input" id="p-equipo" placeholder="ej: Simón Rojas, Yiseth Lemus">
       </div>
+      <div class="form-group">
+        <label class="form-label">Enlace "Más información" (opcional)</label>
+        <input class="form-input" id="p-info-link" type="url" placeholder="https://docs.google.com/… o cualquier URL">
+        <div class="form-hint">Aparece como botón "📄 Más info ↗" en la tarjeta y en el modal del proyecto.</div>
+      </div>
     </div>
     <div class="modal-footer">
       <button class="btn-cancel" onclick="closeModal('modal-proyecto')">Cancelar</button>
@@ -996,10 +1063,20 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
         </div>
       </div>
       <div class="form-group">
-        <label class="form-label">Imágenes (URLs o rutas)</label>
+        <label class="form-label">Imágenes</label>
         <div id="gal-urls-list" class="url-list"></div>
-        <button class="btn-add-url" style="margin-top:.5rem" onclick="addImageUrl()">+ Agregar imagen</button>
-        <div class="form-hint">Ingresa URLs o rutas relativas (ej: ../assets/images/…/foto.jpg)</div>
+        <div style="display:flex;gap:.5rem;margin-top:.5rem;flex-wrap:wrap">
+          <button class="btn-add-url" onclick="addImageUrl()">+ URL / ruta</button>
+          <button class="btn-add-url" style="background:rgba(0,190,170,.08);border-color:rgba(0,190,170,.3);color:var(--accent)"
+            onclick="document.getElementById('gal-file-pick').click()">📂 Subir fotos</button>
+          <button class="btn-add-url" style="background:rgba(0,190,170,.08);border-color:rgba(0,190,170,.3);color:var(--accent)"
+            onclick="document.getElementById('gal-folder-pick').click()">🗂️ Subir carpeta</button>
+        </div>
+        <input type="file" id="gal-file-pick" accept="image/*" multiple style="display:none"
+          onchange="handleGalleryFiles(this.files)">
+        <input type="file" id="gal-folder-pick" accept="image/*" multiple webkitdirectory style="display:none"
+          onchange="handleGalleryFiles(this.files)">
+        <div class="form-hint">Acepta JPG, PNG, WEBP, GIF, etc. Las imágenes se guardan como base64 en localStorage.</div>
       </div>
     </div>
     <div class="modal-footer">
@@ -1163,6 +1240,8 @@ const KEYS = {
   galeria:   'iaxpert_galeria',
   equipo:    'iaxpert_equipo',
   hero:      'iaxpert_hero',
+  extension: 'iaxpert_extension',
+  fabrica:   'iaxpert_fabrica',
 };
 const SESSION_DURATION = 8 * 60 * 60 * 1000; // 8 horas
 const SALT = 'iaxpert_semillero_2025_salt';
@@ -1309,6 +1388,10 @@ function loadPanel(admin){
   // Load hero editor fields
   loadHeroFields();
 
+  // Load extension / fabrica editor fields
+  loadExtensionFields();
+  loadFabricaFields();
+
   // Load perfil fields
   loadPerfilFields(admin);
 
@@ -1413,17 +1496,66 @@ function addImageUrl(url=''){
   const list = document.getElementById('gal-urls-list');
   const item = document.createElement('div');
   item.className='url-item';
-  item.innerHTML=`<input class="form-input" type="text" placeholder="../assets/images/evento/foto.jpg" value="${url}">
+  item.innerHTML=`<input class="form-input url-value" type="text" placeholder="../assets/images/evento/foto.jpg" value="${url}">
     <button class="btn-remove-url" onclick="this.parentElement.remove()">✕</button>`;
   list.appendChild(item);
 }
+
+function _addBase64Image(base64, name){
+  const list = document.getElementById('gal-urls-list');
+  const item = document.createElement('div');
+  item.className='url-item';
+  item.style.cssText='display:flex;align-items:center;gap:.5rem;';
+  item.innerHTML=`
+    <img src="${base64}" alt="${name}"
+      style="width:44px;height:44px;object-fit:cover;border-radius:5px;flex-shrink:0;border:1px solid var(--border2)">
+    <span style="flex:1;font-size:.78rem;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${name}</span>
+    <input type="hidden" class="url-value" value="${base64}">
+    <button class="btn-remove-url" onclick="this.parentElement.remove()">✕</button>`;
+  list.appendChild(item);
+}
+
 function getImageUrls(){
-  return Array.from(document.querySelectorAll('#gal-urls-list .url-item input'))
+  return Array.from(document.querySelectorAll('#gal-urls-list .url-value'))
     .map(i=>i.value.trim()).filter(Boolean);
 }
 function setImageUrls(urls){
   document.getElementById('gal-urls-list').innerHTML='';
-  (urls||[]).forEach(u=>addImageUrl(u));
+  (urls||[]).forEach(u=>{
+    if(u.startsWith('data:image/')) _addBase64Image(u,'(imagen guardada)');
+    else addImageUrl(u);
+  });
+}
+
+/* ── File / folder upload → base64 ── */
+function handleGalleryFiles(files){
+  if(!files||!files.length) return;
+  const MAX_PX = 1400;
+  const QUALITY = 0.82;
+  Array.from(files).forEach(file=>{
+    if(!file.type.startsWith('image/')) return; // skip non-images (e.g. DNG)
+    const reader = new FileReader();
+    reader.onload = function(e){
+      const img = new Image();
+      img.onload = function(){
+        const canvas = document.createElement('canvas');
+        let w = img.width, h = img.height;
+        if(w > MAX_PX || h > MAX_PX){
+          if(w >= h){ h = Math.round(h*MAX_PX/w); w = MAX_PX; }
+          else       { w = Math.round(w*MAX_PX/h); h = MAX_PX; }
+        }
+        canvas.width = w; canvas.height = h;
+        canvas.getContext('2d').drawImage(img,0,0,w,h);
+        const base64 = canvas.toDataURL('image/jpeg', QUALITY);
+        _addBase64Image(base64, file.name);
+      };
+      img.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  });
+  // Reset file pickers so same folder can be re-selected
+  document.getElementById('gal-file-pick').value='';
+  document.getElementById('gal-folder-pick').value='';
 }
 
 /* ══════════════════════════════════════════
@@ -1498,7 +1630,8 @@ function openProyectoModal(p=null){
   document.getElementById('p-initials').value= p?p.initials||'':'';
   document.getElementById('p-entidad').value = p?p.entidad||'':'';
   document.getElementById('p-radicado').value= p?p.radicado||'':'';
-  document.getElementById('p-equipo').value  = p?(p.equipo||[]).join(', '):'';
+  document.getElementById('p-equipo').value     = p?(p.equipo||[]).join(', '):'';
+  document.getElementById('p-info-link').value  = p?p.infoLink||'':'';
   // reset areas
   document.querySelectorAll('#p-areas input').forEach(cb=>{
     cb.checked = p&&(p.area||[]).includes(cb.value);
@@ -1534,6 +1667,7 @@ async function saveProyecto(){
     entidad: document.getElementById('p-entidad').value.trim(),
     radicado: document.getElementById('p-radicado').value.trim(),
     equipo: document.getElementById('p-equipo').value.split(',').map(s=>s.trim()).filter(Boolean),
+    infoLink: document.getElementById('p-info-link').value.trim(),
     color: '#007B99',
   };
   let data = load(KEYS.proyectos);
@@ -1924,6 +2058,146 @@ function saveHero(){
   showToast('Hero actualizado — recarga el sitio para ver los cambios');
 }
 
+/* ═════════════════════════════════════════
+   EXTENSIÓN (Presentación) EDITOR
+═════════════════════════════════════════ */
+const EXT_DEFAULTS = {
+  eyebrow: 'Proyectos de Extensión y Software',
+  titulo:  'Software que <span>transforma</span><br>instituciones reales',
+  desc:    'IAXpert no solo investiga: construye. Desarrollamos productos de software institucional de alto impacto para la Universidad Católica Luis Amigó, combinando metodologías ágiles, arquitecturas modernas y visión de negocio. Cada proyecto es una solución lista para producción.',
+  tags:    ['Java Spring Boot','Angular','Python','MySQL','Scrum / Agile','Business Intelligence'],
+  stats:   [
+    {num:'3',  label:'Productos en desarrollo'},
+    {num:'5',  label:'Sedes beneficiadas'},
+    {num:'16', label:'Semanas de entrega'},
+    {num:'100%',label:'Open source institucional'}
+  ]
+};
+
+function _extData(){
+  return Object.assign({}, EXT_DEFAULTS, load(KEYS.extension, null) || {});
+}
+
+function loadExtensionFields(){
+  const x = _extData();
+  document.getElementById('ext-eyebrow-input').value = x.eyebrow || '';
+  document.getElementById('ext-titulo-input').value  = x.titulo  || '';
+  document.getElementById('ext-desc-input').value    = x.desc    || '';
+  document.getElementById('ext-tags-input').value    = (x.tags||[]).join('\n');
+  // Render stat rows
+  const container = document.getElementById('ext-stats-inputs');
+  container.innerHTML = (x.stats||[]).map((s,i)=>`
+    <div class="form-row" style="margin-bottom:.5rem">
+      <div class="form-group" style="flex:0 0 100px">
+        <label class="form-label">Cifra ${i+1}</label>
+        <input class="form-input" id="ext-stat-${i}-num" value="${s.num}" placeholder="3">
+      </div>
+      <div class="form-group" style="flex:1">
+        <label class="form-label">Etiqueta ${i+1}</label>
+        <input class="form-input" id="ext-stat-${i}-label" value="${s.label}" placeholder="Descripción">
+      </div>
+    </div>`).join('');
+}
+
+function saveExtension(){
+  const tags  = document.getElementById('ext-tags-input').value.split('\n').map(s=>s.trim()).filter(Boolean);
+  const stats = EXT_DEFAULTS.stats.map((_,i)=>({
+    num:   (document.getElementById('ext-stat-'+i+'-num')?.value  || '').trim(),
+    label: (document.getElementById('ext-stat-'+i+'-label')?.value|| '').trim()
+  }));
+  const obj = {
+    eyebrow: document.getElementById('ext-eyebrow-input').value.trim(),
+    titulo:  document.getElementById('ext-titulo-input').value.trim(),
+    desc:    document.getElementById('ext-desc-input').value.trim(),
+    tags, stats
+  };
+  store(KEYS.extension, obj);
+  showToast('Sección Presentación actualizada — recarga el sitio para ver los cambios');
+}
+
+/* ═════════════════════════════════════════
+   DASHBOARD DE PRODUCCIÓN EDITOR
+═════════════════════════════════════════ */
+const FABRICA_DEFAULTS = {
+  subtitle: 'Métricas en tiempo real del semillero. Cada proyecto es una unidad de producción en movimiento.',
+  metrics: [
+    {num:40, label:'Proyectos Totales'},
+    {num:5,  label:'Estados Activos'},
+    {num:3,  label:'Líneas de Investigación'},
+    {num:15, label:'Semilleristas Activos'}
+  ],
+  pipeline: [
+    {icon:'💡', count:4,  label:'Idea / Propuesta'},
+    {icon:'🚀', count:7,  label:'MVP / Entregado'},
+    {icon:'🔬', count:19, label:'Investigación / Revisión'},
+    {icon:'✅', count:7,  label:'Aprobado / Publicación'},
+    {icon:'🧪', count:1,  label:'Pruebas Funcionales'}
+  ]
+};
+
+function _fabricaData(){
+  const saved = load(KEYS.fabrica, null);
+  if(!saved) return JSON.parse(JSON.stringify(FABRICA_DEFAULTS));
+  return {
+    subtitle: saved.subtitle || FABRICA_DEFAULTS.subtitle,
+    metrics:  saved.metrics  || FABRICA_DEFAULTS.metrics,
+    pipeline: saved.pipeline || FABRICA_DEFAULTS.pipeline
+  };
+}
+
+function loadFabricaFields(){
+  const f = _fabricaData();
+  document.getElementById('fabrica-subtitle-input').value = f.subtitle || '';
+  // Metric rows
+  const mContainer = document.getElementById('fabrica-metrics-inputs');
+  mContainer.innerHTML = f.metrics.map((m,i)=>`
+    <div class="form-row" style="margin-bottom:.5rem">
+      <div class="form-group" style="flex:0 0 100px">
+        <label class="form-label">Número ${i+1}</label>
+        <input class="form-input" id="fab-m${i}-num" type="number" value="${m.num}" min="0">
+      </div>
+      <div class="form-group" style="flex:1">
+        <label class="form-label">Etiqueta ${i+1}</label>
+        <input class="form-input" id="fab-m${i}-label" value="${m.label}" placeholder="Etiqueta">
+      </div>
+    </div>`).join('');
+  // Pipeline rows
+  const pContainer = document.getElementById('fabrica-pipeline-inputs');
+  pContainer.innerHTML = f.pipeline.map((p,i)=>`
+    <div class="form-row" style="margin-bottom:.5rem">
+      <div class="form-group" style="flex:0 0 60px">
+        <label class="form-label">Ícono</label>
+        <input class="form-input" id="fab-p${i}-icon" value="${p.icon}" style="text-align:center;font-size:1.1rem">
+      </div>
+      <div class="form-group" style="flex:0 0 90px">
+        <label class="form-label">Cantidad</label>
+        <input class="form-input" id="fab-p${i}-count" type="number" value="${p.count}" min="0">
+      </div>
+      <div class="form-group" style="flex:1">
+        <label class="form-label">Etiqueta</label>
+        <input class="form-input" id="fab-p${i}-label" value="${p.label}" placeholder="Nombre etapa">
+      </div>
+    </div>`).join('');
+}
+
+function saveFabrica(){
+  const metrics = FABRICA_DEFAULTS.metrics.map((_,i)=>({
+    num:   parseInt(document.getElementById('fab-m'+i+'-num')?.value||'0',10),
+    label: (document.getElementById('fab-m'+i+'-label')?.value||'').trim()
+  }));
+  const pipeline = FABRICA_DEFAULTS.pipeline.map((_,i)=>({
+    icon:  (document.getElementById('fab-p'+i+'-icon')?.value||'').trim(),
+    count: parseInt(document.getElementById('fab-p'+i+'-count')?.value||'0',10),
+    label: (document.getElementById('fab-p'+i+'-label')?.value||'').trim()
+  }));
+  const obj = {
+    subtitle: document.getElementById('fabrica-subtitle-input').value.trim(),
+    metrics, pipeline
+  };
+  store(KEYS.fabrica, obj);
+  showToast('Dashboard de Producción actualizado — recarga el sitio para ver los cambios');
+}
+
 /* ═════════════════════════════
    MI PERFIL (Task 3)
 ═════════════════════════════ */
@@ -1997,46 +2271,46 @@ function seedProyectosIfEmpty(){
   const existing = load(KEYS.proyectos);
   if(existing.length > 0) return; // already seeded
   const seed = [
-    {id:'p_seed_1',nombre:'Diseño e Implementación de una Aplicación Móvil para el Reconocimiento de Emociones en Tiempo Real mediante Visión Artificial e IA',tipo:'MVP',estado:'Pruebas funcionales',area:['IA','ML'],equipo:['Todo el semillero IAXpert'],entidad:'Universidad Católica Luis Amigó / Semillero IAXpert',radicado:'1-2025-169052',initials:'EV',color:'#007B99',year:2025},
-    {id:'p_seed_2',nombre:'Rutas Jóvenes: Formación y Empleo con Propósito',tipo:'MVP',estado:'Entregado sin respuesta',area:['Social'],equipo:['Todo el semillero IAXpert'],entidad:'SAPIENSA - Agenda Distrital I+D+i 2025',radicado:'1-2025-169061',initials:'RJ',color:'#F39200',year:2025},
-    {id:'p_seed_3',nombre:'Reducción de Brechas Digitales para la Atención Primaria de Salud en Contextos Territoriales Vulnerables',tipo:'MVP',estado:'Entregado sin respuesta',area:['Salud','Social'],equipo:['Yiseth Camila Lemus','Cristian Andrey Gómez'],entidad:'SAPIENSA',radicado:'1-2025-169063',initials:'BD',color:'#2E7D32',year:2025},
-    {id:'p_seed_4',nombre:'Rutas de Formación y Empleabilidad para Jóvenes en Contextos Urbanos Vulnerables de Medellín',tipo:'MVP',estado:'Entregado sin respuesta',area:['Social','Educación'],equipo:['Salomé de la Rosa','Valeria Rios Tapias'],entidad:'SAPIENSA',radicado:'1-2025-169078',initials:'RF',color:'#F39200',year:2025},
-    {id:'p_seed_5',nombre:'Fortalecimiento de la Gobernanza Territorial mediante Datos Abiertos en Medellín',tipo:'MVP',estado:'Entregado sin respuesta',area:['Social'],equipo:['Santy Usuga','Estefania Palacios'],entidad:'SAPIENSA',radicado:'1-2025-169079',initials:'GT',color:'#007B99',year:2025},
-    {id:'p_seed_6',nombre:'Vigilancia Epidemiológica Inteligente para la Salud Pública Territorial en Medellín',tipo:'MVP',estado:'Entregado sin respuesta',area:['Salud','IA'],equipo:['Yiseth Camila Lemus','Cristian Andrey Gómez'],entidad:'SAPIENSA',radicado:'1-2025-169080',initials:'VE',color:'#2E7D32',year:2025},
-    {id:'p_seed_7',nombre:'Fortalecimiento de la Salud Mental Comunitaria en Barrios Vulnerables de Medellín',tipo:'MVP',estado:'Entregado sin respuesta',area:['Salud','Social'],equipo:['Yiseth Camila Lemus','Cristian Andrey Gómez'],entidad:'SAPIENSA',radicado:'1-2025-169081',initials:'SM',color:'#848585',year:2025},
-    {id:'p_seed_8',nombre:'Gestión de la Biodiversidad y Bioeconomía con Monitoreo de Actividades Ilícitas en Áreas Protegidas',tipo:'Investigación Aplicada',estado:'Entregado sin respuesta',area:['Ambiental','IA'],equipo:['Todo IAXpert','Semillero DIPOL'],entidad:'Colciencias Conv. 966 / DIPOL',radicado:'1-2025-169083',initials:'BG',color:'#2E7D32',year:2025},
-    {id:'p_seed_9',nombre:'Sistemas Agroalimentarios Inteligentes y Detección de Cultivos Ilícitos y Seguridad Alimentaria',tipo:'Investigación Aplicada',estado:'Entregado sin respuesta',area:['IA','Ambiental'],equipo:['Todo IAXpert','Semillero DIPOL'],entidad:'Colciencias Conv. 966 / DIPOL',radicado:'1-2025-169084',initials:'SA',color:'#2E7D32',year:2025},
-    {id:'p_seed_10',nombre:'Energías Renovables y Transición Energética con Seguridad de Infraestructuras Críticas',tipo:'Investigación Aplicada',estado:'Entregado sin respuesta',area:['Ciberseguridad'],equipo:['Todo IAXpert','Semillero DIPOL'],entidad:'Colciencias Conv. 966 / DIPOL',radicado:'1-2025-169085',initials:'ER',color:'#F39200',year:2025},
-    {id:'p_seed_11',nombre:'Tecnologías de IA para la Transformación Educativa en los Territorios',tipo:'Investigación Aplicada',estado:'Entregado sin respuesta',area:['IA','Educación'],equipo:['Todo IAXpert','Semillero DIPOL'],entidad:'Colciencias Conv. 966 / DIPOL',radicado:'1-2025-169086',initials:'TE',color:'#007B99',year:2025},
-    {id:'p_seed_12',nombre:'Gestión de Riesgos y Conservación de la Vida Silvestre con IA',tipo:'Investigación Aplicada',estado:'Entregado sin respuesta',area:['IA','Ambiental'],equipo:['Todo IAXpert','Semillero DIPOL'],entidad:'Colciencias Conv. 966 / DIPOL',radicado:'1-2025-169088',initials:'GR',color:'#2E7D32',year:2025},
-    {id:'p_seed_13',nombre:'IA en Diagnóstico Médico y Medicina Personalizada - Aplicaciones Forenses',tipo:'Investigación Aplicada',estado:'Entregado sin respuesta',area:['IA','Salud'],equipo:['Todo IAXpert','Semillero DIPOL'],entidad:'Colciencias Conv. 966 / DIPOL',radicado:'1-2025-179075',initials:'DM',color:'#007B99',year:2025},
-    {id:'p_seed_14',nombre:'Algoritmos Cuánticos, Criptoanálisis y Optimización de Operaciones',tipo:'Investigación Aplicada',estado:'Entregado sin respuesta',area:['Cuántica'],equipo:['Todo IAXpert','Semillero DIPOL'],entidad:'Colciencias Conv. 966 / DIPOL',radicado:'1-2025-169089',initials:'AQ',color:'#6d28d9',year:2025},
-    {id:'p_seed_15',nombre:'Simulación Cuántica con Modelado de Escenarios para Planificación Operativa',tipo:'Investigación Aplicada',estado:'En revisión',area:['Cuántica'],equipo:['Todo IAXpert','Semillero DIPOL'],entidad:'Colciencias Conv. 966 / DIPOL',radicado:'EN REVISIÓN',initials:'SC',color:'#6d28d9',year:2025},
-    {id:'p_seed_16',nombre:'Circuitos Integrados Cuánticos y Fotónicos para Comunicaciones Seguras',tipo:'Investigación Aplicada',estado:'En revisión',area:['Cuántica','Ciberseguridad'],equipo:['Todo IAXpert','Semillero DIPOL'],entidad:'Colciencias Conv. 966 / DIPOL',radicado:'EN REVISIÓN',initials:'CQ',color:'#6d28d9',year:2025},
-    {id:'p_seed_17',nombre:'Comunicaciones Ultra-Seguras y Aseguramiento de Comunicaciones Críticas',tipo:'Investigación Aplicada',estado:'En revisión',area:['Ciberseguridad','Cuántica'],equipo:['Todo IAXpert','Semillero DIPOL'],entidad:'Colciencias Conv. 966 / DIPOL',radicado:'EN REVISIÓN',initials:'CU',color:'#1a4a2e',year:2025},
-    {id:'p_seed_18',nombre:'Internet Cuántico y Nodos de Red con Comunicaciones Inviolables',tipo:'Investigación Aplicada',estado:'En revisión',area:['Cuántica'],equipo:['Todo IAXpert','Semillero DIPOL'],entidad:'Colciencias Conv. 966 / DIPOL',radicado:'EN REVISIÓN',initials:'IQ',color:'#6d28d9',year:2025},
-    {id:'p_seed_19',nombre:'Sensores Cuánticos para la Agricultura para la detección de Cultivos Ilícitos',tipo:'Investigación Aplicada',estado:'En revisión',area:['Cuántica','Ambiental'],equipo:['Todo IAXpert','Semillero DIPOL'],entidad:'Colciencias Conv. 966 / DIPOL',radicado:'EN REVISIÓN',initials:'QA',color:'#6d28d9',year:2025},
-    {id:'p_seed_20',nombre:'Sensores Cuánticos para la Salud de Detección de Agentes Químicos/Biológicos',tipo:'Investigación Aplicada',estado:'En revisión',area:['Cuántica','Salud'],equipo:['Todo IAXpert','Semillero DIPOL'],entidad:'Colciencias Conv. 966 / DIPOL',radicado:'EN REVISIÓN',initials:'QH',color:'#6d28d9',year:2025},
-    {id:'p_seed_21',nombre:'Sensores Cuánticos para el Medio Ambiente y Monitoreo de Fronteras',tipo:'Investigación Aplicada',estado:'En revisión',area:['Cuántica','Ambiental'],equipo:['Todo IAXpert','Semillero DIPOL'],entidad:'Colciencias Conv. 966 / DIPOL',radicado:'EN REVISIÓN',initials:'QE',color:'#6d28d9',year:2025},
-    {id:'p_seed_22',nombre:'Tecnologías para el Desminado y Detección Eficiente de Minas Antipersona y AEI',tipo:'Investigación Aplicada',estado:'En revisión',area:['Social'],equipo:['Todo IAXpert','Semillero DIPOL'],entidad:'Colciencias Conv. 966 / DIPOL',radicado:'EN REVISIÓN',initials:'TD',color:'#848585',year:2025},
-    {id:'p_seed_23',nombre:'Metrología Cuántica con Calibración de Alta Precisión para Forensia e Inteligencia',tipo:'Investigación Aplicada',estado:'En revisión',area:['Cuántica'],equipo:['Todo IAXpert','Semillero DIPOL'],entidad:'Colciencias Conv. 966 / DIPOL',radicado:'EN REVISIÓN',initials:'MQ',color:'#6d28d9',year:2025},
-    {id:'p_seed_24',nombre:'Simulación Cuántica de Materiales para Blindaje y Equipos de Vigilancia',tipo:'Investigación Aplicada',estado:'En revisión',area:['Cuántica'],equipo:['Todo IAXpert','Semillero DIPOL'],entidad:'Colciencias Conv. 966 / DIPOL',radicado:'EN REVISIÓN',initials:'MS',color:'#6d28d9',year:2025},
-    {id:'p_seed_25',nombre:'Tecnologías Cuánticas para la Eficiencia Energética en Instalaciones Críticas',tipo:'Investigación Aplicada',estado:'En revisión',area:['Cuántica'],equipo:['Todo IAXpert','Semillero DIPOL'],entidad:'Colciencias Conv. 966 / DIPOL',radicado:'EN REVISIÓN',initials:'QE',color:'#6d28d9',year:2025},
-    {id:'p_seed_26',nombre:'Semiconductores y Superconductores para Equipos de Inteligencia y Vigilancia',tipo:'Investigación Aplicada',estado:'En revisión',area:['Cuántica','Ciberseguridad'],equipo:['Todo IAXpert','Semillero DIPOL'],entidad:'Colciencias Conv. 966 / DIPOL',radicado:'EN REVISIÓN',initials:'SS',color:'#6d28d9',year:2025},
-    {id:'p_seed_27',nombre:'Plataforma Web Gamificada para Fortalecimiento del Aprendizaje en Programación',tipo:'Memorias',estado:'Aprobado',area:['Educación','IA'],equipo:['Yiseth Camila Lemus','Cristian Andrey Gómez'],entidad:'ENI16 XXVIII Encuentro Nacional de Investigación',radicado:'N/A',initials:'PG',color:'#F39200',year:2025},
-    {id:'p_seed_28',nombre:'Inteligencia Artificial Aplicada en Sistemas Expertos para Diagnóstico Educativo',tipo:'Memorias',estado:'Aprobado',area:['IA','Educación'],equipo:['Yiseth Camila Lemus','Cristian Andrey Gómez'],entidad:'ENI16 XXVIII Encuentro Nacional de Investigación',radicado:'N/A',initials:'SE',color:'#007B99',year:2025},
-    {id:'p_seed_29',nombre:'Metodología de Hacking Ético para Evaluación de Vulnerabilidades en Sistemas Educativos',tipo:'Memorias',estado:'Aprobado',area:['Ciberseguridad','Educación'],equipo:['Yiseth Camila Lemus','Cristian Andrey Gómez'],entidad:'ENI16 XXVIII Encuentro Nacional de Investigación',radicado:'N/A',initials:'HE',color:'#1a4a2e',year:2025},
-    {id:'p_seed_30',nombre:'Plataforma de Mentores Virtuales con IA Generativa e IoT para el Emprendimiento Rural',tipo:'Ponencia',estado:'Esperando publicación',area:['IA','Social'],equipo:['Salomé De La Rosa','Valeria Ríos Tapias','Simón Rojas Castaño'],entidad:'CIIISOL 2025',radicado:'EN REVISIÓN',initials:'MV',color:'#F39200',year:2025},
-    {id:'p_seed_31',nombre:'GuardianNet: Solución de Firewall Personal de Bajo Costo con Impacto Social',tipo:'Ponencia',estado:'Esperando publicación',area:['Ciberseguridad'],equipo:['Cristian Andrey Gómez Osorio'],entidad:'CIIISOL 2025',radicado:'EN REVISIÓN',initials:'GN',color:'#1a4a2e',year:2025},
-    {id:'p_seed_32',nombre:'CyberCampo: Plataforma Educativa con IA para PYMEs Rurales Colombianas',tipo:'Ponencia',estado:'Esperando publicación',area:['Ciberseguridad','Educación'],equipo:['Yiseth Camila Lemus Moreno'],entidad:'CIIISOL 2025',radicado:'EN REVISIÓN',initials:'CC',color:'#1a4a2e',year:2025},
-    {id:'p_seed_33',nombre:'Sistema Blockchain para Gobernanza Participativa en Gestión de Recursos Hídricos Rurales',tipo:'Ponencia',estado:'Esperando publicación',area:['Social'],equipo:['Durley López Alzate'],entidad:'CIIISOL 2025',radicado:'EN REVISIÓN',initials:'BC',color:'#007B99',year:2025},
-    {id:'p_seed_34',nombre:'Plataforma de Realidad Virtual para Entrenamiento en Ciberseguridad Empresarial',tipo:'Ideas/Propuestas',estado:'En revisión',area:['Ciberseguridad','Educación'],equipo:['Todo IAXpert'],entidad:'Propuesta para Convocatoria MinTIC 2025',radicado:'PROPUESTA',initials:'VR',color:'#1a4a2e',year:2025},
-    {id:'p_seed_35',nombre:'Sistema de IA para Detección Temprana de Enfermedades en Cultivos Agrícolas',tipo:'Ideas/Propuestas',estado:'En revisión',area:['IA','Ambiental'],equipo:['Yiseth Camila Lemus','Cristian Andrey Gómez'],entidad:'Propuesta para Colciencias 2025',radicado:'PROPUESTA',initials:'IA',color:'#2E7D32',year:2025},
-    {id:'p_seed_36',nombre:'Aplicación Móvil para Monitoreo de Salud Mental en Estudiantes Universitarios',tipo:'Ideas/Propuestas',estado:'En revisión',area:['Salud','IA'],equipo:['Salomé de la Rosa','Valeria Rios Tapias'],entidad:'Propuesta para Universidad Católica Luis Amigó',radicado:'PROPUESTA',initials:'SM',color:'#007B99',year:2025},
-    {id:'p_seed_37',nombre:'Red Neuronal para Optimización de Rutas de Distribución Urbana Sostenible',tipo:'Ideas/Propuestas',estado:'En revisión',area:['IA','Social'],equipo:['Todo IAXpert'],entidad:'Propuesta para Alcaldía de Medellín',radicado:'PROPUESTA',initials:'RN',color:'#F39200',year:2025},
-    {id:'p_seed_38',nombre:'SADESC - Sistema de Análisis de Datos para la Dirección de Extensión y Servicios a la Comunidad',tipo:'MVP',estado:'Pruebas funcionales',area:['IA','Educación'],equipo:['Equipo HADOOPERS','Equipo CLOUDY'],entidad:'Universidad Católica Luis Amigó - Dirección de Extensión',radicado:'ISE009-2025-EXT-001',initials:'SD',color:'#007B99',year:2025},
-    {id:'p_seed_39',nombre:'CRM Extensión UCLA - Sistema de Gestión de Relaciones para la Unidad de Extensión',tipo:'MVP',estado:'En revisión',area:['IA','Educación'],equipo:['Todo IAXpert'],entidad:'Universidad Católica Luis Amigó - Unidad de Extensión',radicado:'Discovery Phase v2.0',initials:'CR',color:'#005877',year:2025},
-    {id:'p_seed_40',nombre:'Plan Assessment 2025-02 - Automatización del Cruce de Resultados Académicos con Rúbricas RAP',tipo:'MVP',estado:'Pruebas funcionales',area:['IA','Educación'],equipo:['Fernando Higuita Bedoya','Durley López Alzate'],entidad:'Universidad Católica Luis Amigó',radicado:'Assessment 2025-02',initials:'PA',color:'#b45309',year:2025},
+    {id:'p_seed_1',nombre:'Diseño e Implementación de una Aplicación Móvil para el Reconocimiento de Emociones en Tiempo Real mediante Visión Artificial e IA',tipo:'MVP',estado:'Pruebas funcionales',area:['IA','ML'],equipo:['Todo el semillero IAXpert'],entidad:'Universidad Católica Luis Amigó / Semillero IAXpert',radicado:'1-2025-169052',initials:'EV',color:'#007B99',infoLink:'',year:2025},
+    {id:'p_seed_2',nombre:'Rutas Jóvenes: Formación y Empleo con Propósito',tipo:'MVP',estado:'Entregado sin respuesta',area:['Social'],equipo:['Todo el semillero IAXpert'],entidad:'SAPIENSA - Agenda Distrital I+D+i 2025',radicado:'1-2025-169061',initials:'RJ',color:'#F39200',infoLink:'',year:2025},
+    {id:'p_seed_3',nombre:'Reducción de Brechas Digitales para la Atención Primaria de Salud en Contextos Territoriales Vulnerables',tipo:'MVP',estado:'Entregado sin respuesta',area:['Salud','Social'],equipo:['Yiseth Camila Lemus','Cristian Andrey Gómez'],entidad:'SAPIENSA',radicado:'1-2025-169063',initials:'BD',color:'#2E7D32',infoLink:'',year:2025},
+    {id:'p_seed_4',nombre:'Rutas de Formación y Empleabilidad para Jóvenes en Contextos Urbanos Vulnerables de Medellín',tipo:'MVP',estado:'Entregado sin respuesta',area:['Social','Educación'],equipo:['Salomé de la Rosa','Valeria Rios Tapias'],entidad:'SAPIENSA',radicado:'1-2025-169078',initials:'RF',color:'#F39200',infoLink:'',year:2025},
+    {id:'p_seed_5',nombre:'Fortalecimiento de la Gobernanza Territorial mediante Datos Abiertos en Medellín',tipo:'MVP',estado:'Entregado sin respuesta',area:['Social'],equipo:['Santy Usuga','Estefania Palacios'],entidad:'SAPIENSA',radicado:'1-2025-169079',initials:'GT',color:'#007B99',infoLink:'',year:2025},
+    {id:'p_seed_6',nombre:'Vigilancia Epidemiológica Inteligente para la Salud Pública Territorial en Medellín',tipo:'MVP',estado:'Entregado sin respuesta',area:['Salud','IA'],equipo:['Yiseth Camila Lemus','Cristian Andrey Gómez'],entidad:'SAPIENSA',radicado:'1-2025-169080',initials:'VE',color:'#2E7D32',infoLink:'',year:2025},
+    {id:'p_seed_7',nombre:'Fortalecimiento de la Salud Mental Comunitaria en Barrios Vulnerables de Medellín',tipo:'MVP',estado:'Entregado sin respuesta',area:['Salud','Social'],equipo:['Yiseth Camila Lemus','Cristian Andrey Gómez'],entidad:'SAPIENSA',radicado:'1-2025-169081',initials:'SM',color:'#848585',infoLink:'',year:2025},
+    {id:'p_seed_8',nombre:'Gestión de la Biodiversidad y Bioeconomía con Monitoreo de Actividades Ilícitas en Áreas Protegidas',tipo:'Investigación Aplicada',estado:'Entregado sin respuesta',area:['Ambiental','IA'],equipo:['Todo IAXpert','Semillero DIPOL'],entidad:'Colciencias Conv. 966 / DIPOL',radicado:'1-2025-169083',initials:'BG',color:'#2E7D32',infoLink:'',year:2025},
+    {id:'p_seed_9',nombre:'Sistemas Agroalimentarios Inteligentes y Detección de Cultivos Ilícitos y Seguridad Alimentaria',tipo:'Investigación Aplicada',estado:'Entregado sin respuesta',area:['IA','Ambiental'],equipo:['Todo IAXpert','Semillero DIPOL'],entidad:'Colciencias Conv. 966 / DIPOL',radicado:'1-2025-169084',initials:'SA',color:'#2E7D32',infoLink:'',year:2025},
+    {id:'p_seed_10',nombre:'Energías Renovables y Transición Energética con Seguridad de Infraestructuras Críticas',tipo:'Investigación Aplicada',estado:'Entregado sin respuesta',area:['Ciberseguridad'],equipo:['Todo IAXpert','Semillero DIPOL'],entidad:'Colciencias Conv. 966 / DIPOL',radicado:'1-2025-169085',initials:'ER',color:'#F39200',infoLink:'',year:2025},
+    {id:'p_seed_11',nombre:'Tecnologías de IA para la Transformación Educativa en los Territorios',tipo:'Investigación Aplicada',estado:'Entregado sin respuesta',area:['IA','Educación'],equipo:['Todo IAXpert','Semillero DIPOL'],entidad:'Colciencias Conv. 966 / DIPOL',radicado:'1-2025-169086',initials:'TE',color:'#007B99',infoLink:'',year:2025},
+    {id:'p_seed_12',nombre:'Gestión de Riesgos y Conservación de la Vida Silvestre con IA',tipo:'Investigación Aplicada',estado:'Entregado sin respuesta',area:['IA','Ambiental'],equipo:['Todo IAXpert','Semillero DIPOL'],entidad:'Colciencias Conv. 966 / DIPOL',radicado:'1-2025-169088',initials:'GR',color:'#2E7D32',infoLink:'',year:2025},
+    {id:'p_seed_13',nombre:'IA en Diagnóstico Médico y Medicina Personalizada - Aplicaciones Forenses',tipo:'Investigación Aplicada',estado:'Entregado sin respuesta',area:['IA','Salud'],equipo:['Todo IAXpert','Semillero DIPOL'],entidad:'Colciencias Conv. 966 / DIPOL',radicado:'1-2025-179075',initials:'DM',color:'#007B99',infoLink:'',year:2025},
+    {id:'p_seed_14',nombre:'Algoritmos Cuánticos, Criptoanálisis y Optimización de Operaciones',tipo:'Investigación Aplicada',estado:'Entregado sin respuesta',area:['Cuántica'],equipo:['Todo IAXpert','Semillero DIPOL'],entidad:'Colciencias Conv. 966 / DIPOL',radicado:'1-2025-169089',initials:'AQ',color:'#6d28d9',infoLink:'',year:2025},
+    {id:'p_seed_15',nombre:'Simulación Cuántica con Modelado de Escenarios para Planificación Operativa',tipo:'Investigación Aplicada',estado:'En revisión',area:['Cuántica'],equipo:['Todo IAXpert','Semillero DIPOL'],entidad:'Colciencias Conv. 966 / DIPOL',radicado:'EN REVISIÓN',initials:'SC',color:'#6d28d9',infoLink:'',year:2025},
+    {id:'p_seed_16',nombre:'Circuitos Integrados Cuánticos y Fotónicos para Comunicaciones Seguras',tipo:'Investigación Aplicada',estado:'En revisión',area:['Cuántica','Ciberseguridad'],equipo:['Todo IAXpert','Semillero DIPOL'],entidad:'Colciencias Conv. 966 / DIPOL',radicado:'EN REVISIÓN',initials:'CQ',color:'#6d28d9',infoLink:'',year:2025},
+    {id:'p_seed_17',nombre:'Comunicaciones Ultra-Seguras y Aseguramiento de Comunicaciones Críticas',tipo:'Investigación Aplicada',estado:'En revisión',area:['Ciberseguridad','Cuántica'],equipo:['Todo IAXpert','Semillero DIPOL'],entidad:'Colciencias Conv. 966 / DIPOL',radicado:'EN REVISIÓN',initials:'CU',color:'#1a4a2e',infoLink:'',year:2025},
+    {id:'p_seed_18',nombre:'Internet Cuántico y Nodos de Red con Comunicaciones Inviolables',tipo:'Investigación Aplicada',estado:'En revisión',area:['Cuántica'],equipo:['Todo IAXpert','Semillero DIPOL'],entidad:'Colciencias Conv. 966 / DIPOL',radicado:'EN REVISIÓN',initials:'IQ',color:'#6d28d9',infoLink:'',year:2025},
+    {id:'p_seed_19',nombre:'Sensores Cuánticos para la Agricultura para la detección de Cultivos Ilícitos',tipo:'Investigación Aplicada',estado:'En revisión',area:['Cuántica','Ambiental'],equipo:['Todo IAXpert','Semillero DIPOL'],entidad:'Colciencias Conv. 966 / DIPOL',radicado:'EN REVISIÓN',initials:'QA',color:'#6d28d9',infoLink:'',year:2025},
+    {id:'p_seed_20',nombre:'Sensores Cuánticos para la Salud de Detección de Agentes Químicos/Biológicos',tipo:'Investigación Aplicada',estado:'En revisión',area:['Cuántica','Salud'],equipo:['Todo IAXpert','Semillero DIPOL'],entidad:'Colciencias Conv. 966 / DIPOL',radicado:'EN REVISIÓN',initials:'QH',color:'#6d28d9',infoLink:'',year:2025},
+    {id:'p_seed_21',nombre:'Sensores Cuánticos para el Medio Ambiente y Monitoreo de Fronteras',tipo:'Investigación Aplicada',estado:'En revisión',area:['Cuántica','Ambiental'],equipo:['Todo IAXpert','Semillero DIPOL'],entidad:'Colciencias Conv. 966 / DIPOL',radicado:'EN REVISIÓN',initials:'QE',color:'#6d28d9',infoLink:'',year:2025},
+    {id:'p_seed_22',nombre:'Tecnologías para el Desminado y Detección Eficiente de Minas Antipersona y AEI',tipo:'Investigación Aplicada',estado:'En revisión',area:['Social'],equipo:['Todo IAXpert','Semillero DIPOL'],entidad:'Colciencias Conv. 966 / DIPOL',radicado:'EN REVISIÓN',initials:'TD',color:'#848585',infoLink:'',year:2025},
+    {id:'p_seed_23',nombre:'Metrología Cuántica con Calibración de Alta Precisión para Forensia e Inteligencia',tipo:'Investigación Aplicada',estado:'En revisión',area:['Cuántica'],equipo:['Todo IAXpert','Semillero DIPOL'],entidad:'Colciencias Conv. 966 / DIPOL',radicado:'EN REVISIÓN',initials:'MQ',color:'#6d28d9',infoLink:'',year:2025},
+    {id:'p_seed_24',nombre:'Simulación Cuántica de Materiales para Blindaje y Equipos de Vigilancia',tipo:'Investigación Aplicada',estado:'En revisión',area:['Cuántica'],equipo:['Todo IAXpert','Semillero DIPOL'],entidad:'Colciencias Conv. 966 / DIPOL',radicado:'EN REVISIÓN',initials:'MS',color:'#6d28d9',infoLink:'',year:2025},
+    {id:'p_seed_25',nombre:'Tecnologías Cuánticas para la Eficiencia Energética en Instalaciones Críticas',tipo:'Investigación Aplicada',estado:'En revisión',area:['Cuántica'],equipo:['Todo IAXpert','Semillero DIPOL'],entidad:'Colciencias Conv. 966 / DIPOL',radicado:'EN REVISIÓN',initials:'QE',color:'#6d28d9',infoLink:'',year:2025},
+    {id:'p_seed_26',nombre:'Semiconductores y Superconductores para Equipos de Inteligencia y Vigilancia',tipo:'Investigación Aplicada',estado:'En revisión',area:['Cuántica','Ciberseguridad'],equipo:['Todo IAXpert','Semillero DIPOL'],entidad:'Colciencias Conv. 966 / DIPOL',radicado:'EN REVISIÓN',initials:'SS',color:'#6d28d9',infoLink:'',year:2025},
+    {id:'p_seed_27',nombre:'Plataforma Web Gamificada para Fortalecimiento del Aprendizaje en Programación',tipo:'Memorias',estado:'Aprobado',area:['Educación','IA'],equipo:['Yiseth Camila Lemus','Cristian Andrey Gómez'],entidad:'ENI16 XXVIII Encuentro Nacional de Investigación',radicado:'N/A',initials:'PG',color:'#F39200',infoLink:'',year:2025},
+    {id:'p_seed_28',nombre:'Inteligencia Artificial Aplicada en Sistemas Expertos para Diagnóstico Educativo',tipo:'Memorias',estado:'Aprobado',area:['IA','Educación'],equipo:['Yiseth Camila Lemus','Cristian Andrey Gómez'],entidad:'ENI16 XXVIII Encuentro Nacional de Investigación',radicado:'N/A',initials:'SE',color:'#007B99',infoLink:'',year:2025},
+    {id:'p_seed_29',nombre:'Metodología de Hacking Ético para Evaluación de Vulnerabilidades en Sistemas Educativos',tipo:'Memorias',estado:'Aprobado',area:['Ciberseguridad','Educación'],equipo:['Yiseth Camila Lemus','Cristian Andrey Gómez'],entidad:'ENI16 XXVIII Encuentro Nacional de Investigación',radicado:'N/A',initials:'HE',color:'#1a4a2e',infoLink:'',year:2025},
+    {id:'p_seed_30',nombre:'Plataforma de Mentores Virtuales con IA Generativa e IoT para el Emprendimiento Rural',tipo:'Ponencia',estado:'Esperando publicación',area:['IA','Social'],equipo:['Salomé De La Rosa','Valeria Ríos Tapias','Simón Rojas Castaño'],entidad:'CIIISOL 2025',radicado:'EN REVISIÓN',initials:'MV',color:'#F39200',infoLink:'',year:2025},
+    {id:'p_seed_31',nombre:'GuardianNet: Solución de Firewall Personal de Bajo Costo con Impacto Social',tipo:'Ponencia',estado:'Esperando publicación',area:['Ciberseguridad'],equipo:['Cristian Andrey Gómez Osorio'],entidad:'CIIISOL 2025',radicado:'EN REVISIÓN',initials:'GN',color:'#1a4a2e',infoLink:'',year:2025},
+    {id:'p_seed_32',nombre:'CyberCampo: Plataforma Educativa con IA para PYMEs Rurales Colombianas',tipo:'Ponencia',estado:'Esperando publicación',area:['Ciberseguridad','Educación'],equipo:['Yiseth Camila Lemus Moreno'],entidad:'CIIISOL 2025',radicado:'EN REVISIÓN',initials:'CC',color:'#1a4a2e',infoLink:'',year:2025},
+    {id:'p_seed_33',nombre:'Sistema Blockchain para Gobernanza Participativa en Gestión de Recursos Hídricos Rurales',tipo:'Ponencia',estado:'Esperando publicación',area:['Social'],equipo:['Durley López Alzate'],entidad:'CIIISOL 2025',radicado:'EN REVISIÓN',initials:'BC',color:'#007B99',infoLink:'',year:2025},
+    {id:'p_seed_34',nombre:'Plataforma de Realidad Virtual para Entrenamiento en Ciberseguridad Empresarial',tipo:'Ideas/Propuestas',estado:'En revisión',area:['Ciberseguridad','Educación'],equipo:['Todo IAXpert'],entidad:'Propuesta para Convocatoria MinTIC 2025',radicado:'PROPUESTA',initials:'VR',color:'#1a4a2e',infoLink:'',year:2025},
+    {id:'p_seed_35',nombre:'Sistema de IA para Detección Temprana de Enfermedades en Cultivos Agrícolas',tipo:'Ideas/Propuestas',estado:'En revisión',area:['IA','Ambiental'],equipo:['Yiseth Camila Lemus','Cristian Andrey Gómez'],entidad:'Propuesta para Colciencias 2025',radicado:'PROPUESTA',initials:'IA',color:'#2E7D32',infoLink:'',year:2025},
+    {id:'p_seed_36',nombre:'Aplicación Móvil para Monitoreo de Salud Mental en Estudiantes Universitarios',tipo:'Ideas/Propuestas',estado:'En revisión',area:['Salud','IA'],equipo:['Salomé de la Rosa','Valeria Rios Tapias'],entidad:'Propuesta para Universidad Católica Luis Amigó',radicado:'PROPUESTA',initials:'SM',color:'#007B99',infoLink:'',year:2025},
+    {id:'p_seed_37',nombre:'Red Neuronal para Optimización de Rutas de Distribución Urbana Sostenible',tipo:'Ideas/Propuestas',estado:'En revisión',area:['IA','Social'],equipo:['Todo IAXpert'],entidad:'Propuesta para Alcaldía de Medellín',radicado:'PROPUESTA',initials:'RN',color:'#F39200',infoLink:'',year:2025},
+    {id:'p_seed_38',nombre:'SADESC - Sistema de Análisis de Datos para la Dirección de Extensión y Servicios a la Comunidad',tipo:'MVP',estado:'Pruebas funcionales',area:['IA','Educación'],equipo:['Equipo HADOOPERS','Equipo CLOUDY'],entidad:'Universidad Católica Luis Amigó - Dirección de Extensión',radicado:'ISE009-2025-EXT-001',initials:'SD',color:'#007B99',infoLink:'',year:2025},
+    {id:'p_seed_39',nombre:'CRM Extensión UCLA - Sistema de Gestión de Relaciones para la Unidad de Extensión',tipo:'MVP',estado:'En revisión',area:['IA','Educación'],equipo:['Todo IAXpert'],entidad:'Universidad Católica Luis Amigó - Unidad de Extensión',radicado:'Discovery Phase v2.0',initials:'CR',color:'#005877',infoLink:'',year:2025},
+    {id:'p_seed_40',nombre:'Plan Assessment 2025-02 - Automatización del Cruce de Resultados Académicos con Rúbricas RAP',tipo:'MVP',estado:'Pruebas funcionales',area:['IA','Educación'],equipo:['Fernando Higuita Bedoya','Durley López Alzate'],entidad:'Universidad Católica Luis Amigó',radicado:'Assessment 2025-02',initials:'PA',color:'#b45309',infoLink:'',year:2025},
   ];
   store(KEYS.proyectos, seed);
 }
